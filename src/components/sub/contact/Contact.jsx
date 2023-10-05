@@ -15,9 +15,16 @@ export default function Contact() {
 	};
 
 	//마커 위치 인스턴스를 인수로 전달해서 마커 출력 인스턴스 객체를 생성
+	const imageSrc = `${process.env.PUBLIC_URL}/img/marker1.png`;
+	const imageSize = new kakao.maps.Size(232, 99);
+	const imageOption = { offset: new kakao.maps.Point(116, 90) };
+
+	const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
 
 	const marker = new kakao.maps.Marker({
 		position: mapOption.center,
+
+		image: markerImage,
 	});
 
 	useEffect(() => {
@@ -26,7 +33,7 @@ export default function Contact() {
 		//마커 출력 인스턴스에 지도 인스턴스 결합
 
 		marker.setMap(instance);
-	});
+	}, []);
 
 	return (
 		<Layout title={'Contact'} className='contact'>
