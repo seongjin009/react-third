@@ -31,12 +31,14 @@ export default function Contact() {
 		//마커 객체에 지도 객체 연결
 
 		marker.setMap(instance.current);
+		const mapTypeControl = new kakao.maps.MapTypeControl();
+		instance.current.addControl(mapTypeControl, kakao.maps.ControlPosition.BOTTOMLEFT);
 	}, []);
 
 	useEffect(() => {
 		Traffic
 			? instance.current.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC)
-			: instance.current.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
+			: instance.current.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
 	}, [Traffic]);
 
 	return (
