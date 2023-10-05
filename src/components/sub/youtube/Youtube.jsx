@@ -1,9 +1,11 @@
 import Layout from '../../common/layout/Layout';
+import Modal from '../../common/modal/Modal';
 import './Youtube.scss';
 import { useEffect, useState } from 'react';
 
 export default function Youtube() {
 	const [Youtube, setYoutube] = useState([]);
+	const [IsModal, setIsModal] = useState(false);
 
 	const fetchYoutube = () => {
 		const api_key = process.env.REACT_APP_YOUTUBE_API;
@@ -24,17 +26,20 @@ export default function Youtube() {
 		fetchYoutube();
 	}, []);
 	return (
-		<Layout title={'Youtube'}>
-			{Youtube.map((data, idx) => {
-				return (
-					<article key={idx}>
-						<h2>{data.snippet.description}</h2>
-						<div className='pic'>
-							<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
-						</div>
-					</article>
-				);
-			})}
-		</Layout>
+		<>
+			<Layout title={'Youtube'}>
+				{Youtube.map((data, idx) => {
+					return (
+						<article key={idx}>
+							<h2>{data.snippet.description}</h2>
+							<div className='pic' onClick={() => setIsModal(true)}>
+								<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
+							</div>
+						</article>
+					);
+				})}
+			</Layout>
+			{IsModal && <Modal></Modal>}
+		</>
 	);
 }
