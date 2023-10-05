@@ -10,12 +10,22 @@ export default function Contact() {
 	const { kakao } = window;
 
 	const mapOption = {
-		center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-		level: 3, // 지도의 확대 레벨
+		center: new kakao.maps.LatLng(37.58508114809894, 126.8855901911026), // 지도의 중심좌표
+		level: 1, // 지도의 확대 레벨
 	};
 
+	//마커 위치 인스턴스를 인수로 전달해서 마커 출력 인스턴스 객체를 생성
+
+	const marker = new kakao.maps.Marker({
+		position: mapOption.center,
+	});
+
 	useEffect(() => {
-		new kakao.maps.Map(map.current, mapOption);
+		//컴포넌트 마은트 되자마자 지도인스턴스 생성
+		const instance = new kakao.maps.Map(map.current, mapOption);
+		//마커 출력 인스턴스에 지도 인스턴스 결합
+
+		marker.setMap(instance);
 	});
 
 	return (
