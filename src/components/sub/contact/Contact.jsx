@@ -1,18 +1,20 @@
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import Layout from '../../common/layout/Layout';
 import './Contact.scss';
-import { useRef, useEffect, useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { useRef, useEffect, useState } from 'react';
 
 export default function Contact() {
+	const form = useRef(null);
 	const map = useRef(null);
 	const view = useRef(null);
 	const instance = useRef(null);
 	const [Traffic, setTraffic] = useState(false);
 	const [Index, setIndex] = useState(2);
 	const { kakao } = window;
+
 	const [IsMap, setIsMap] = useState(false);
-	const form = useRef();
+
 	//첫번째 지도를 출력하기 위한 객체정보
 	const info = useRef([
 		{
@@ -77,12 +79,12 @@ export default function Contact() {
 	const sendEmail = (e) => {
 		e.preventDefault();
 
-		emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_PUBLIC_KEY').then(
+		emailjs.sendForm('service_e9crmle', 'template_ykzkm22', form.current, 'sq09TDFAdq5UL0Rpu').then(
 			(result) => {
-				console.log(result.text);
+				alert('문의내용이 메일로 발송되었습니다.');
 			},
 			(error) => {
-				console.log(error.text);
+				alert('문의내용 전송에 실패했습니다.');
 			}
 		);
 	};
