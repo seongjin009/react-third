@@ -10,6 +10,7 @@ export default function Contact() {
 	const [Traffic, setTraffic] = useState(false);
 	const [Index, setIndex] = useState(2);
 	const { kakao } = window;
+	const [IsMap, setIsMap] = useState(false);
 	//첫번째 지도를 출력하기 위한 객체정보
 	const info = useRef([
 		{
@@ -65,7 +66,8 @@ export default function Contact() {
 
 		//로드뷰 관련 코드
 
-		new kakao.maps.RoadviewClient().getNearestPanoId(info.current[Index].latlng, 50, (panoId) => {
+		//100, 해당 지도의 위치값에서 반경 100미터 안에 제일 가까운 도로 기준으로 로드뷰화면 생성
+		new kakao.maps.RoadviewClient().getNearestPanoId(info.current[Index].latlng, 100, (panoId) => {
 			new kakao.maps.Roadview(view.current).setPanoId(panoId, info.current[Index].latlng);
 		});
 	}, [Index]); //Index값이 변경될때마다 지도화면이 다시 갱신되어야 하므로 Index값을 의존성 배열에 등록
@@ -83,10 +85,12 @@ export default function Contact() {
 			</button>
 
 			<button onClick={setCenter}>지도 위치 초기화</button>
+			<button onClick={() => setIsMap(!IsMap)}>{IsMap ? '로드뷰 보기' : '지도보기'}</button>
 
-			<div className='map' ref={map}></div>
-			<div className='view' ref={view}></div>
-
+			<div className='container'>
+				<div className={`view ${IsMap ? `` : 'on'}`} ref={view}></div>
+				<div className={`map ${IsMap ? 'on' : ''}`} ref={map}></div>
+			</div>
 			<ul>
 				{info.current.map((el, idx) => (
 					<li className={Index === idx ? 'on' : ''} key={idx} onClick={() => setIndex(idx)}>
