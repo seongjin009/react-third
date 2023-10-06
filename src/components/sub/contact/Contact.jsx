@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import Layout from '../../common/layout/Layout';
 import './Contact.scss';
 import { useRef, useEffect, useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
 	const map = useRef(null);
@@ -11,6 +12,7 @@ export default function Contact() {
 	const [Index, setIndex] = useState(2);
 	const { kakao } = window;
 	const [IsMap, setIsMap] = useState(false);
+	const form = useRef();
 	//첫번째 지도를 출력하기 위한 객체정보
 	const info = useRef([
 		{
@@ -72,6 +74,22 @@ export default function Contact() {
 		});
 	}, [Index]); //Index값이 변경될때마다 지도화면이 다시 갱신되어야 하므로 Index값을 의존성 배열에 등록
 
+	const sendEmail = (e) => {
+		e.preventDefault();
+
+		emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_PUBLIC_KEY').then(
+			(result) => {
+				console.log(result.text);
+			},
+			(error) => {
+				console.log(error.text);
+			}
+		);
+	};
+
+	//form-mail관련 useEffect
+	useEffect(() => {}, []);
+
 	useEffect(() => {
 		//traffic 값이 바뀔때마다 실행될 구문
 		Traffic
@@ -80,24 +98,38 @@ export default function Contact() {
 	}, [Traffic]);
 	return (
 		<Layout title={'Contact'}>
-			<button onClick={() => setTraffic(!Traffic)}>
-				{Traffic ? '교통정보 끄기' : '교통정보 켜기'}
-			</button>
-
-			<button onClick={setCenter}>지도 위치 초기화</button>
-			<button onClick={() => setIsMap(!IsMap)}>{IsMap ? '로드뷰 보기' : '지도보기'}</button>
-
-			<div className='container'>
-				<div className={`view ${IsMap ? `` : 'on'}`} ref={view}></div>
-				<div className={`map ${IsMap ? 'on' : ''}`} ref={map}></div>
+			<div id='mailBox'>
+				<form ref={form} onSubmit={sendEmail}>
+					<label>Name</label>
+					<input type='text' name='user_name' />
+					<label>Email</label>
+					<input type='email' name='user_email' />
+					<label>Message</label>
+					<textarea name='message' />
+					<input type='submit' value='Send' />
+				</form>
 			</div>
-			<ul>
-				{info.current.map((el, idx) => (
-					<li className={Index === idx ? 'on' : ''} key={idx} onClick={() => setIndex(idx)}>
-						{el.title}
-					</li>
-				))}
-			</ul>
+
+			<div id='mapBox'>
+				<button onClick={() => setTraffic(!Traffic)}>
+					{Traffic ? '교통정보 끄기' : '교통정보 켜기'}
+				</button>
+
+				<button onClick={setCenter}>지도 위치 초기화</button>
+				<button onClick={() => setIsMap(!IsMap)}>{IsMap ? '로드뷰 보기' : '지도보기'}</button>
+
+				<div className='container'>
+					<div className={`view ${IsMap ? `` : 'on'}`} ref={view}></div>
+					<div className={`map ${IsMap ? 'on' : ''}`} ref={map}></div>
+				</div>
+				<ul>
+					{info.current.map((el, idx) => (
+						<li className={Index === idx ? 'on' : ''} key={idx} onClick={() => setIndex(idx)}>
+							{el.title}
+						</li>
+					))}
+				</ul>
+			</div>
 		</Layout>
 	);
 }
