@@ -81,16 +81,24 @@ export default function Contact() {
 	}, [Traffic]);
 
 	const resetForm = () => {
-		const [nameKey, nameValue, emailKey, emailValue, msgKey, msgValue] = form.current.children;
-
-		nameValue.value = '';
-		emailValue.value = '';
-		msgValue.value = '';
+		const nameForm = form.current.querySelector('.nameEl');
+		const mailForm = form.current.querySelector('.emailEl');
+		const msgForm = form.current.querySelector('.msgEl');
+		nameForm.value = '';
+		mailForm.value = '';
+		msgForm.value = '';
 	};
 
 	//form mail 기능함수
 	const sendEmail = (e) => {
 		e.preventDefault();
+		const nameForm = form.current.querySelector('.nameEl');
+		const mailForm = form.current.querySelector('.emailEl');
+		const msgForm = form.current.querySelector('.msgEl');
+
+		if (!nameForm.value || !mailForm.value || !msgForm.value)
+			return alert('사용자이름, 이메일주소, 문의내용은 필수 입력사항입니다.');
+
 		//sendForm메서드는 각 키값을 문자열로만 인수로 전달되도록 type지정되어 있기 때문에
 		//변수를 `${}`로 감싸서 문자형식으로 전달
 		emailjs
@@ -104,7 +112,6 @@ export default function Contact() {
 				(result) => {
 					alert('문의내용이 메일로 발송되었습니다.');
 					console.log(result);
-					const [nameKey, nameValue, emailKey, emailValue, msgValue] = form.current.children;
 				},
 				(error) => {
 					alert('문의내용 전송에 실패했습니다.');
@@ -116,13 +123,22 @@ export default function Contact() {
 		<Layout title={'Contact'}>
 			<div id='mailBox'>
 				<form ref={form} onSubmit={sendEmail}>
-					<label>Name</label>
-					<input type='text' name='user_name' />
-					<label>Email</label>
-					<input type='email' name='user_email' />
-					<label>Message</label>
-					<textarea name='message' />
-					<input type='submit' value='Send' />
+					<div className='upper'>
+						<label>Name</label>
+						<input type='text' name='user_name' className='nameEl' />
+						<label>Email</label>
+						<input type='email' name='user_email' className='emailEl' />
+					</div>
+
+					<div className='lower'>
+						<label>Message</label>
+						<textarea name='message' className='msgEl' />
+					</div>
+
+					<div className='btnSet'>
+						<input type='reset' value='Cancel' />
+						<input type='submit' value='Send' />
+					</div>
 				</form>
 			</div>
 			<div id='mapBox'>
