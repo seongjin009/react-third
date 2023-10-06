@@ -6,7 +6,7 @@ export default function Contact() {
 	const instance = useRef(null);
 	const [Traffic, setTraffic] = useState(false);
 	const { kakao } = window;
-	const [Index, setIndex] = useState(2);
+	const [Index, setIndex] = useState(0);
 	//첫번째 지도를 출력하기 위한 객체정보
 	const info = useRef([
 		{
@@ -41,6 +41,7 @@ export default function Contact() {
 		),
 	});
 	useEffect(() => {
+		map.current.innerHTML = '';
 		//객체 정보를 활용한 지도 객체 생성
 		instance.current = new kakao.maps.Map(map.current, {
 			center: info.current[Index].latlng,
@@ -64,9 +65,11 @@ export default function Contact() {
 				{Traffic ? '교통정보 끄기' : '교통정보 켜기'}
 			</button>
 			<ul>
-				<li onClick={() => setIndex(0)}>삼성역 코엑스</li>
-				<li onClick={() => setIndex(1)}>a넥슨 본사</li>
-				<li onClick={() => setIndex(2)}>서울 시청</li>
+				{info.current.map((el, idx) => (
+					<li className={Index === idx ? 'on' : ''} key={idx} onClick={() => setIndex(idx)}>
+						{el.title}
+					</li>
+				))}
 			</ul>
 			<div className='map' ref={map}></div>
 		</Layout>
