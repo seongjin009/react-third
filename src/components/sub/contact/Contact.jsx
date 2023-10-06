@@ -64,13 +64,9 @@ export default function Contact() {
 		window.addEventListener('resize', setCenter);
 
 		//로드뷰 관련 코드
-		const roadviewContainer = view.current;
-		const roadview = new kakao.maps.Roadview(roadviewContainer);
-		const roadviewClient = new kakao.maps.RoadviewClient();
-		const position = info.current[Index].latlng;
 
-		roadviewClient.getNearestPanoId(position, 50, (panoId) => {
-			roadview.setPanoId(panoId, position); //panoId와 중심좌표를 통해 로드뷰 실행
+		new kakao.maps.RoadviewClient().getNearestPanoId(info.current[Index].latlng, 50, (panoId) => {
+			new kakao.maps.Roadview(view.current).setPanoId(panoId, info.current[Index].latlng);
 		});
 	}, [Index]); //Index값이 변경될때마다 지도화면이 다시 갱신되어야 하므로 Index값을 의존성 배열에 등록
 
