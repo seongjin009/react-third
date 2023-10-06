@@ -1,12 +1,15 @@
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import Layout from '../../common/layout/Layout';
 import './Contact.scss';
 import { useRef, useEffect, useState } from 'react';
+
 export default function Contact() {
 	const map = useRef(null);
+	const view = useRef(null);
 	const instance = useRef(null);
 	const [Traffic, setTraffic] = useState(false);
+	const [Index, setIndex] = useState(2);
 	const { kakao } = window;
-	const [Index, setIndex] = useState(0);
 	//첫번째 지도를 출력하기 위한 객체정보
 	const info = useRef([
 		{
@@ -40,7 +43,13 @@ export default function Contact() {
 			info.current[Index].imgPos
 		),
 	});
+	const setCenter = () => {
+		// 지도 중심을 이동 시킵니다
+		instance.current.setCenter(info.current[Index].latlng);
+	};
 	useEffect(() => {
+		//Index값이 변경될때마다 새로운 지도 레이어가 중첩되므로
+		//일단은 기존 map안의 모든 요소를 없애서 초기화
 		map.current.innerHTML = '';
 		//객체 정보를 활용한 지도 객체 생성
 		instance.current = new kakao.maps.Map(map.current, {
@@ -49,9 +58,21 @@ export default function Contact() {
 		});
 		//마커 객체에 지도 객체 연결
 		marker.setMap(instance.current);
+		//지도 타입 변경 UI추가
 		const mapTypeControl = new kakao.maps.MapTypeControl();
 		instance.current.addControl(mapTypeControl, kakao.maps.ControlPosition.BOTTOMLEFT);
-	}, [Index]); //Index값이 변경될 때마다 지도화면이 다시 갱신되어야 하므로 Index값을 의존성 배열에 등록
+		window.addEventListener('resize', setCenter);
+
+		//로드뷰 관련 코드
+		const roadviewContainer = view.current;
+		const roadview = new kakao.maps.Roadview(roadviewContainer);
+		const roadviewClient = new kakao.maps.RoadviewClient();
+		const position = info.current[Index].latlng;
+
+		roadviewClient.getNearestPanoId(position, 50, (panoId) => {
+			roadview.setPanoId(panoId, position); //panoId와 중심좌표를 통해 로드뷰 실행
+		});
+	}, [Index]); //Index값이 변경될때마다 지도화면이 다시 갱신되어야 하므로 Index값을 의존성 배열에 등록
 
 	useEffect(() => {
 		//traffic 값이 바뀔때마다 실행될 구문
@@ -64,6 +85,12 @@ export default function Contact() {
 			<button onClick={() => setTraffic(!Traffic)}>
 				{Traffic ? '교통정보 끄기' : '교통정보 켜기'}
 			</button>
+
+			<button onClick={setCenter}>지도 위치 초기화</button>
+
+			<div className='map' ref={map}></div>
+			<div className='view' ref={view}></div>
+
 			<ul>
 				{info.current.map((el, idx) => (
 					<li className={Index === idx ? 'on' : ''} key={idx} onClick={() => setIndex(idx)}>
@@ -71,7 +98,6 @@ export default function Contact() {
 					</li>
 				))}
 			</ul>
-			<div className='map' ref={map}></div>
 		</Layout>
 	);
 }
