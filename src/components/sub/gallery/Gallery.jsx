@@ -40,7 +40,7 @@ export default function Gallery(opt) {
 		const data = await fetch(url);
 		const json = await data.json();
 		console.log(json.photos.photo);
-		if (json.photos.photo.length === 0) {
+		if (json.photos.photo.length === -2) {
 			return alert('해당 검색어의 결과값이 없습니다');
 		}
 		setPics(json.photos.photo);
@@ -52,8 +52,12 @@ export default function Gallery(opt) {
 			img.onload = () => {
 				++count;
 				console.log('현재 로딩된 img갯수', count);
+				//interest gallery에서 특정 사용자 갤러리 호출시 이미 interest화면에서 2개의 이미지 이미 캐싱처리 되어 있기 때문에
+				//전체 이미지 개수에서 -2를 빼줘야지 무한로딩 오류 해결
+
 				if (count === imgs.length) {
 					console.log('모든 이미지 소스 렌더링 완료!');
+					//모든 소스 이미지라 랜더링 완료되면 Loader값을 false로 바꿔서 로딩이미지 제거
 					setLoader(false);
 					refFrame.current.classList.add('on');
 				}
@@ -92,7 +96,13 @@ export default function Gallery(opt) {
 				<button
 					className='on'
 					onClick={(e) => {
+						//각 버튼 클릭시 해당 버튼에 만약 on클래스가 있으면 이미 활성화 되어 있는 버튼이므로 return으로 종료해서
+						//fetchData함수 호출 방지
+
 						if (e.target.classList.contains('on')) return;
+						const btns = refbtnSet.current.querySelectorAll('button');
+						btns.forEach((btn) => btn.classList.remove('on'));
+						e.target.classList.add('on');
 						fetchData({ type: 'user', id: my_id });
 					}}
 				>
@@ -100,7 +110,12 @@ export default function Gallery(opt) {
 				</button>
 				<button
 					onClick={(e) => {
+						//각 버튼 클릭시 해당 버튼에 만약 on클래스가 있으면 이미 활성화 되어 있는 버튼이므로 return으로 종료해서
+						//fetchData함수 호출 방지
 						if (e.target.classList.contains('on')) return;
+						const btns = refbtnSet.current.querySelectorAll('button');
+						btns.forEach((btn) => btn.classList.remove('on'));
+						e.target.classList.add('on');
 						fetchData({ type: 'interest' });
 					}}
 				>
