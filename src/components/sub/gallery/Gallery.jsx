@@ -2,6 +2,7 @@ import Layout from '../../common/layout/Layout';
 import './Gallery.scss';
 import { useState, useEffect, useRef } from 'react';
 import Masonry from 'react-masonry-component';
+import Modal from '../../common/modal/Modal';
 
 export default function Gallery(opt) {
 	let count = 0;
@@ -19,6 +20,10 @@ export default function Gallery(opt) {
 	const refbtnSet = useRef(null);
 
 	const [Fix, setFix] = useState(false);
+
+	const [ActiveURL, setActiveURL] = useState('');
+
+	const [Open, setOpen] = useState(false);
 
 	//현재 갤러리 타입이 User타입인지 확인하기 위해
 	const [IsUser, setIsUser] = useState(true);
@@ -83,106 +88,125 @@ export default function Gallery(opt) {
 	}, []);
 
 	return (
-		<Layout title={'Gallery'}>
-			<div className='searchBox'>
-				<form
-					onSubmit={(e) => {
-						e.preventDefault();
-						//검색 갤ㄹ러리 이벤트 발생시 활성화
-						setIsUser(false);
-						if (refInput.current.value.trim() === '') {
-							return alert('검색어를 입력하세요.');
-						}
-						fetchData({ type: 'search', tags: refInput.current.value });
-						refInput.current.value = '';
-					}}
-				>
-					<input ref={refInput} type='text' placeholder='검색어를 입력하세요' />
-					<button>검색</button>
-				</form>
-			</div>
-			{/* 각 버튼 클릭 시 on클래스가 있으면 강제 리턴 */}
-			<div className='btnSet' ref={refbtnSet}>
-				<button
-					className='on'
-					onClick={(e) => {
-						//각 버튼 클릭시 해당 버튼에 만약 on클래스가 있으면 이미 활성화 되어 있는 버튼이므로 return으로 종료해서
-						//fetchData함수 호출 방지
+		<>
+			<Layout title={'Gallery'}>
+				<div className='searchBox'>
+					<form
+						onSubmit={(e) => {
+							e.preventDefault();
+							//검색 갤ㄹ러리 이벤트 발생시 활성화
+							setIsUser(false);
+							if (refInput.current.value.trim() === '') {
+								return alert('검색어를 입력하세요.');
+							}
+							fetchData({ type: 'search', tags: refInput.current.value });
+							refInput.current.value = '';
+						}}
+					>
+						<input ref={refInput} type='text' placeholder='검색어를 입력하세요' />
+						<button>검색</button>
+					</form>
+				</div>
+				{/* 각 버튼 클릭 시 on클래스가 있으면 강제 리턴 */}
+				<div className='btnSet' ref={refbtnSet}>
+					<button
+						className='on'
+						onClick={(e) => {
+							//각 버튼 클릭시 해당 버튼에 만약 on클래스가 있으면 이미 활성화 되어 있는 버튼이므로 return으로 종료해서
+							//fetchData함수 호출 방지
 
-						setIsUser(true);
-						if (e.target.classList.contains('on')) return;
-						const btns = refbtnSet.current.querySelectorAll('button');
-						btns.forEach((btn) => btn.classList.remove('on'));
-						e.target.classList.add('on');
-						fetchData({ type: 'user', id: my_id });
-					}}
-				>
-					My Gallery
-				</button>
-				<button
-					onClick={(e) => {
-						setIsUser(false);
-						//각 버튼 클릭시 해당 버튼에 만약 on클래스가 있으면 이미 활성화 되어 있는 버튼이므로 return으로 종료해서
-						//fetchData함수 호출 방지
+							setIsUser(true);
+							if (e.target.classList.contains('on')) return;
+							const btns = refbtnSet.current.querySelectorAll('button');
+							btns.forEach((btn) => btn.classList.remove('on'));
+							e.target.classList.add('on');
+							fetchData({ type: 'user', id: my_id });
+						}}
+					>
+						My Gallery
+					</button>
+					<button
+						onClick={(e) => {
+							setIsUser(false);
+							//각 버튼 클릭시 해당 버튼에 만약 on클래스가 있으면 이미 활성화 되어 있는 버튼이므로 return으로 종료해서
+							//fetchData함수 호출 방지
 
-						if (e.target.classList.contains('on')) return;
-						const btns = refbtnSet.current.querySelectorAll('button');
-						btns.forEach((btn) => btn.classList.remove('on'));
-						e.target.classList.add('on');
-						fetchData({ type: 'interest' });
-					}}
-				>
-					Interest Gallery
-				</button>
-			</div>
-			{/* Loader가 true: 로딩바출력, Loader가 false: 갤러리 프레임 출력 */}
-			{Loader && (
-				<img className='loading' src={`${process.env.PUBLIC_URL}/img/loading.gif`} alt='loading' />
-			)}
-			<div className='picFrame' ref={refFrame}>
-				<Masonry
-					elementType={'div'}
-					options={{ transitionDuration: '0.5s' }}
-					disableImagesLoaded={false}
-					updateOnEachImageLoad={false}
-				>
-					{Pics.map((data, idx) => {
-						return (
-							<article key={idx}>
-								<div className='inner'>
-									<img
-										className='pic'
-										src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_m.jpg`}
-										alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
-									/>
-									<h2>{data.title}</h2>
-									<div className='profile'>
+							if (e.target.classList.contains('on')) return;
+							const btns = refbtnSet.current.querySelectorAll('button');
+							btns.forEach((btn) => btn.classList.remove('on'));
+							e.target.classList.add('on');
+							fetchData({ type: 'interest' });
+						}}
+					>
+						Interest Gallery
+					</button>
+				</div>
+				{/* Loader가 true: 로딩바출력, Loader가 false: 갤러리 프레임 출력 */}
+				{Loader && (
+					<img
+						className='loading'
+						src={`${process.env.PUBLIC_URL}/img/loading.gif`}
+						alt='loading'
+					/>
+				)}
+				<div className='picFrame' ref={refFrame}>
+					<Masonry
+						elementType={'div'}
+						options={{ transitionDuration: '0.5s' }}
+						disableImagesLoaded={false}
+						updateOnEachImageLoad={false}
+					>
+						{Pics.map((data, idx) => {
+							return (
+								<article key={idx}>
+									<div className='inner'>
 										<img
-											src={`http://farm${data.farm}.staticflickr.com/${data.server}/buddyicons/${data.owner}.jpg`}
-											alt={data.owner}
-											onError={(e) => {
-												setFix(true);
-												//만약 사용자가 프로필 이미지를 올리지 않았을때 엑박이 뜨므로
-												//onError이벤트를 연결해서 대체이미지 출력
-												e.target.setAttribute('src', 'https://www.flickr.com/images/buddyicon.gif');
+											className='pic'
+											src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_m.jpg`}
+											alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
+											onClick={(e) => {
+												setActiveURL(e.target.getAttribute('alt'));
+												setOpen(true);
 											}}
 										/>
-										<span
-											onClick={() => {
-												if (IsUser) return;
-												fetchData({ type: 'user', id: data.owner });
-												setIsUser(true);
-											}}
-										>
-											{data.owner}
-										</span>
+										<h2>{data.title}</h2>
+										<div className='profile'>
+											<img
+												src={`http://farm${data.farm}.staticflickr.com/${data.server}/buddyicons/${data.owner}.jpg`}
+												alt={data.owner}
+												onError={(e) => {
+													setFix(true);
+													//만약 사용자가 프로필 이미지를 올리지 않았을때 엑박이 뜨므로
+													//onError이벤트를 연결해서 대체이미지 출력
+													e.target.setAttribute(
+														'src',
+														'https://www.flickr.com/images/buddyicon.gif'
+													);
+												}}
+											/>
+											<span
+												onClick={() => {
+													if (IsUser) return;
+													fetchData({ type: 'user', id: data.owner });
+													setIsUser(true);
+												}}
+											>
+												{data.owner}
+											</span>
+										</div>
 									</div>
-								</div>
-							</article>
-						);
-					})}
-				</Masonry>
-			</div>
-		</Layout>
+								</article>
+							);
+						})}
+					</Masonry>
+				</div>
+			</Layout>
+
+			{Open && (
+				<Modal>
+					<img src={ActiveURL} alt='img' />
+				</Modal>
+			)}
+		</>
 	);
 }
