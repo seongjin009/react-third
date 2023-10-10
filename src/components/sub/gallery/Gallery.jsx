@@ -16,7 +16,7 @@ export default function Gallery(opt) {
 		const method_interest = 'flickr.interestingness.getList';
 		const method_user = 'flickr.people.getPhotos';
 		const method_search = 'flickr.photos.search';
-		const num = 50;
+		const num = 500;
 
 		if (opt.type === 'interest') {
 			url = `https://www.flickr.com/services/rest/?method=${method_interest}&api_key=${api_key}&per_page=${num}&nojsoncallback=1&format=json`;
@@ -33,6 +33,9 @@ export default function Gallery(opt) {
 		const data = await fetch(url);
 		const json = await data.json();
 		console.log(json.photos.photo);
+		if (json.photos.photo.length === 0) {
+			return alert('해당 검색어의 결과값이 없습니다');
+		}
 		setPics(json.photos.photo);
 	};
 
@@ -88,6 +91,9 @@ export default function Gallery(opt) {
 										<img
 											src={`http://farm${data.farm}.staticflickr.com/${data.server}/buddyicons/${data.owner}.jpg`}
 											alt={data.owner}
+											onError={(e) => {
+												e.target.setAttribute('src', 'https://www.flickr.com/images/buddyicon.gif');
+											}}
 										/>
 										<span onClick={() => fetchData({ type: 'user', id: data.owner })}>
 											{data.owner}
