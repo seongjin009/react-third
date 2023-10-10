@@ -18,6 +18,11 @@ export default function Gallery(opt) {
 
 	const refbtnSet = useRef(null);
 
+	const [Fix, setFix] = useState(false);
+
+	//현재 갤러리 타입이 User타입인지 확인하기 위해
+	const [IsUser, setIsUser] = useState(true);
+
 	const fetchData = async (opt) => {
 		setLoader(true);
 
@@ -58,7 +63,7 @@ export default function Gallery(opt) {
 				//interest gallery에서 특정 사용자 갤러리 호출시 이미 interest화면에서 2개의 이미지 이미 캐싱처리 되어 있기 때문에
 				//전체 이미지 개수에서 -2를 빼줘야지 무한로딩 오류 해결
 
-				if (count === imgs.length - 2) {
+				if (count === (Fix ? imgs.length / 2 - 1 : imgs.length - 2)) {
 					console.log('모든 이미지 소스 렌더링 완료!');
 					//모든 소스 이미지라 랜더링 완료되면 Loader값을 false로 바꿔서 로딩이미지 제거
 					setLoader(false);
@@ -83,6 +88,8 @@ export default function Gallery(opt) {
 				<form
 					onSubmit={(e) => {
 						e.preventDefault();
+						//검색 갤ㄹ러리 이벤트 발생시 활성화
+						setIsUser(false);
 						if (refInput.current.value.trim() === '') {
 							return alert('검색어를 입력하세요.');
 						}
@@ -102,6 +109,7 @@ export default function Gallery(opt) {
 						//각 버튼 클릭시 해당 버튼에 만약 on클래스가 있으면 이미 활성화 되어 있는 버튼이므로 return으로 종료해서
 						//fetchData함수 호출 방지
 
+						setIsUser(true);
 						if (e.target.classList.contains('on')) return;
 						const btns = refbtnSet.current.querySelectorAll('button');
 						btns.forEach((btn) => btn.classList.remove('on'));
@@ -113,8 +121,10 @@ export default function Gallery(opt) {
 				</button>
 				<button
 					onClick={(e) => {
+						setIsUser(false);
 						//각 버튼 클릭시 해당 버튼에 만약 on클래스가 있으면 이미 활성화 되어 있는 버튼이므로 return으로 종료해서
 						//fetchData함수 호출 방지
+
 						if (e.target.classList.contains('on')) return;
 						const btns = refbtnSet.current.querySelectorAll('button');
 						btns.forEach((btn) => btn.classList.remove('on'));
@@ -151,12 +161,19 @@ export default function Gallery(opt) {
 											src={`http://farm${data.farm}.staticflickr.com/${data.server}/buddyicons/${data.owner}.jpg`}
 											alt={data.owner}
 											onError={(e) => {
+												setFix(true);
 												//만약 사용자가 프로필 이미지를 올리지 않았을때 엑박이 뜨므로
 												//onError이벤트를 연결해서 대체이미지 출력
 												e.target.setAttribute('src', 'https://www.flickr.com/images/buddyicon.gif');
 											}}
 										/>
-										<span onClick={() => fetchData({ type: 'user', id: data.owner })}>
+										<span
+											onClick={() => {
+												if (IsUser) return;
+												fetchData({ type: 'user', id: data.owner });
+												setIsUser(true);
+											}}
+										>
 											{data.owner}
 										</span>
 									</div>
