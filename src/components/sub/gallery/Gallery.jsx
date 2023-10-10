@@ -14,15 +14,16 @@ export default function Gallery(opt) {
 
 	const my_id = '199282986@N03';
 
+	const refbtnSet = useRef(null);
+
 	const fetchData = async (opt) => {
-		setLoader(true);
 		refFrame.current.classList.remove('on');
 		let url = '';
 		const api_key = '3d01d56ea3c92153f235a2985a9776f6';
 		const method_interest = 'flickr.interestingness.getList';
 		const method_user = 'flickr.people.getPhotos';
 		const method_search = 'flickr.photos.search';
-		const num = 500;
+		const num = 100;
 
 		if (opt.type === 'interest') {
 			url = `https://www.flickr.com/services/rest/?method=${method_interest}&api_key=${api_key}&per_page=${num}&nojsoncallback=1&format=json`;
@@ -86,9 +87,25 @@ export default function Gallery(opt) {
 					<button>검색</button>
 				</form>
 			</div>
-			<div className='btnSet'>
-				<button onClick={() => fetchData({ type: 'user', id: my_id })}>My Gallery</button>
-				<button onClick={() => fetchData({ type: 'interest' })}>Interest Gallery</button>
+			{/* 각 버튼 클릭 시 on클래스가 있으면 강제 리턴 */}
+			<div className='btnSet' ref={refbtnSet}>
+				<button
+					className='on'
+					onClick={(e) => {
+						if (e.target.classList.contains('on')) return;
+						fetchData({ type: 'user', id: my_id });
+					}}
+				>
+					My Gallery
+				</button>
+				<button
+					onClick={(e) => {
+						if (e.target.classList.contains('on')) return;
+						fetchData({ type: 'interest' });
+					}}
+				>
+					Interest Gallery
+				</button>
 			</div>
 			{/* Loader가 true: 로딩바출력, Loader가 false: 갤러리 프레임 출력 */}
 			{Loader && (
