@@ -8,7 +8,7 @@ export default function Gallery(opt) {
 
 	const refFrame = useRef(null);
 
-	const [Loader, setLoader] = useState(false);
+	const [Loader, setLoader] = useState(true);
 
 	const [Pics, setPics] = useState([]);
 
@@ -51,6 +51,7 @@ export default function Gallery(opt) {
 				console.log('현재 로딩된 img갯수', count);
 				if (count === imgs.length) {
 					console.log('모든 이미지 소스 렌더링 완료!');
+					setLoader(false);
 				}
 			};
 		});
