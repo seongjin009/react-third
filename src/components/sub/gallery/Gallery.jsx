@@ -4,6 +4,8 @@ import { useState, useEffect, useRef } from 'react';
 import Masonry from 'react-masonry-component';
 
 export default function Gallery(opt) {
+	let count = 0;
+
 	const refInput = useRef(null);
 
 	const refFrame = useRef(null);
@@ -17,13 +19,15 @@ export default function Gallery(opt) {
 	const refbtnSet = useRef(null);
 
 	const fetchData = async (opt) => {
+		setLoader(true);
+
 		refFrame.current.classList.remove('on');
 		let url = '';
 		const api_key = '3d01d56ea3c92153f235a2985a9776f6';
 		const method_interest = 'flickr.interestingness.getList';
 		const method_user = 'flickr.people.getPhotos';
 		const method_search = 'flickr.photos.search';
-		const num = 100;
+		const num = 10;
 
 		if (opt.type === 'interest') {
 			url = `https://www.flickr.com/services/rest/?method=${method_interest}&api_key=${api_key}&per_page=${num}&nojsoncallback=1&format=json`;
@@ -40,22 +44,21 @@ export default function Gallery(opt) {
 		const data = await fetch(url);
 		const json = await data.json();
 		console.log(json.photos.photo);
-		if (json.photos.photo.length === -2) {
+		if (json.photos.photo.length === 0) {
 			return alert('해당 검색어의 결과값이 없습니다');
 		}
 		setPics(json.photos.photo);
 
-		let count = 0;
 		const imgs = refFrame.current?.querySelectorAll('img');
 
-		imgs.forEach((img, idx) => {
+		imgs.forEach((img) => {
 			img.onload = () => {
 				++count;
 				console.log('현재 로딩된 img갯수', count);
 				//interest gallery에서 특정 사용자 갤러리 호출시 이미 interest화면에서 2개의 이미지 이미 캐싱처리 되어 있기 때문에
 				//전체 이미지 개수에서 -2를 빼줘야지 무한로딩 오류 해결
 
-				if (count === imgs.length) {
+				if (count === imgs.length - 2) {
 					console.log('모든 이미지 소스 렌더링 완료!');
 					//모든 소스 이미지라 랜더링 완료되면 Loader값을 false로 바꿔서 로딩이미지 제거
 					setLoader(false);
