@@ -27,6 +27,7 @@ export default function Youtube() {
 	return (
 		<>
 			<Layout title={'Youtube'}>
+				<div className='line'></div>
 				{Youtube.map((data, idx) => {
 					let tit = data.snippet.title;
 					let desc = data.snippet.description;
@@ -34,17 +35,23 @@ export default function Youtube() {
 
 					return (
 						<article key={idx}>
-							<h2>{tit.length > 10 ? tit.substr(0, 60) + '...' : tit}</h2>
-							<p>{desc.length > 10 ? tit.substr(0, 60) + '...' : desc}</p>
-							<span>{date.split('T')[0].split('-').join('.')}</span>
-							<div
-								className='pic'
-								onClick={() => {
-									setIndex(idx);
-									setIsModal(true);
-								}}
-							>
-								<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
+							<div className='titBox'>
+								<h2>{tit.length > 100 ? tit.substr(0, 60) + '...' : tit}</h2>
+							</div>
+							<div className='conBox'>
+								<p>{desc.length > 10 ? tit.substr(0, 60) + '...' : desc}</p>
+								<span>{date.split('T')[0].split('-').join('.')}</span>
+							</div>
+							<div className='picBox'>
+								<div
+									className='pic'
+									onClick={() => {
+										setIndex(idx);
+										setIsModal(true);
+									}}
+								>
+									<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
+								</div>
 							</div>
 						</article>
 					);

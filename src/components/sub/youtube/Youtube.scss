@@ -1,0 +1,43 @@
+.Youtube {
+	position: relative;
+	.line {
+		width: 30vw;
+		height: 1px;
+		border: 1px solid black;
+	}
+	figure {
+	}
+	.content {
+		h1 {
+		}
+	}
+	article {
+		width: 60%;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		margin-top: 100px;
+		margin-bottom: 80px;
+
+		&:nth-of-type(even) {
+			flex-direction: row-reverse;
+		}
+
+		.titBox {
+			width: 30%;
+		}
+		.conBox {
+			width: 40%;
+		}
+		.picBox {
+			width: 30%;
+			height: 200px;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+	}
+}
