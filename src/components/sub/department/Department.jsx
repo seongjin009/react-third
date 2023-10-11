@@ -90,13 +90,14 @@ fetch: ES6에서 기본문법으로 포함된 동기적으로 외부데이터를
 fetch는 promise반환 promise가 반환되야지 .then구문 호출가능
 .then구문을 호출해야지만 동기적으로 다음코드 실행가능
 
-promise : 데이터의 상태값을 추적할 수 있는 객체
-promise의 3가지 상태
-pending : 요청을 보내고 응갑을 받기까지의 대기상태
-fullfilled: pending이 끝나고 요청에 대한 응답을 성공적으로 받은 상태
-rejected: pending이 끝나고 요청에 대한 응답을 받긴 하지만 에러를 받환받은 상태를 rejected
-
 JSON(Javascript Object Notation) 자바스크립트 객체 표현식
 - 자바스크립트의 객체를 문자열형태로 관리하는 데이터 형식
 - 문자형식으로 되어있는 JSON는 다시 객체형식으로 변환 (parsing)
+
+promise : 데이터의 상태값을 추적할 수 있는 객체
+	promise의 3가지 상태
+	pending: 요청을 보내고 응답을 받기까지의 대기상태
+	fulfilled: pending이 끝나고 요청에 대한 응답을 성공적으로 받은 상태
+	rejected: pending이 끝나고 요청에 대한 응답을 받긴 하지만 에러를 반환받은 상태를 rejected
+
  */
