@@ -23,7 +23,7 @@ export default function Gallery(opt) {
 
 	const [ActiveURL, setActiveURL] = useState('');
 
-	const [Open, setOpen] = useState(false);
+	const [IsModal, setIsModal] = useState(false);
 
 	const [IsUser, setIsUser] = useState(true);
 
@@ -159,7 +159,7 @@ export default function Gallery(opt) {
 											alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
 											onClick={(e) => {
 												setActiveURL(e.target.getAttribute('alt'));
-												setOpen(true);
+												setIsModal(true);
 											}}
 										/>
 										<h2>{data.title}</h2>
@@ -186,12 +186,12 @@ export default function Gallery(opt) {
 					</Masonry>
 				</div>
 			</Layout>
-
-			{Open && (
-				<Modal>
+			{IsModal && (
+				<Modal setIsModal={setIsModal}>
 					<img src={ActiveURL} alt='img' />
 				</Modal>
 			)}
+			IsModal
 		</>
 	);
 }

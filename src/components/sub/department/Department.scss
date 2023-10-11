@@ -1,51 +1,41 @@
-.department {
+@import '/src/styles/Variable.scss';
+.Department {
+	position: relative;
 	figure {
 		background-color: lightblue;
 	}
+	.line {
+		width: 63vw;
+		border-bottom: 3px solid black;
+		margin: 10px;
+	}
+	.subtit {
+		width: 50%;
+		font-size: 1rem;
+		float: right;
+		margin: 10px;
 
-	.historyBox {
-		margin: 100px 0px;
-		article {
-			width: 100%;
-			display: flex;
-			flex-wrap: wrap;
-			padding: 50px 0px;
-			justify-content: space-between;
-			position: relative;
-
-			.line {
-				position: absolute;
-				top: 0;
-				left: 35%;
-				width: 1px;
-				height: 1px;
-				background: #555;
-			}
-
-			h2 {
-				width: 30%;
-				text-align: right;
-			}
-			ul {
-				width: 65%;
-				padding-left: 50px;
-			}
+		.line1 {
+			border-bottom: 2px solid black;
+			margin: 30px;
 		}
 	}
 
 	.memberBox {
-		width: 100%;
+		margin: 10px;
+		margin-top: 60px;
+		width: 90%;
 		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
+		gap: 10px;
+		position: absolute;
+		top: 70%;
 
 		article {
-			width: 100%;
-			margin-bottom: 100px;
+			width: 30%;
 
 			.pic {
 				width: 100%;
-				height: 30vw;
+				height: 25vw;
 
 				img {
 					width: 100%;
@@ -55,8 +45,70 @@
 			}
 
 			h2 {
-				margin-bottom: 10px;
+				margin-top: 3px;
+				font-size: 1.3rem;
+				margin-bottom: 3px;
 			}
+			p {
+				font-size: 0.8rem;
+				margin-bottom: 3px;
+
+				span {
+					font-weight: bold;
+				}
+			}
+		}
+	}
+	.directior {
+		width: 100%;
+		height: 70px;
+		position: absolute;
+		bottom: -33vw;
+		left: 6vw;
+		font-weight: bold;
+	}
+}
+@media screen and (max-width: $tablet) {
+	.Department {
+		.subtit {
+			width: 100%;
+			float: left;
+			font-size: 1rem;
+			margin: 10px;
+		}
+
+		.memberBox {
+			width: 45%;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			gap: 10px;
+			position: relative;
+			top: 150%;
+
+			article {
+				h2 {
+					margin-top: 3px;
+					font-size: 1rem;
+					margin-bottom: 3px;
+				}
+				p {
+					font-size: 0.5rem;
+					margin-bottom: 3px;
+
+					span {
+						font-weight: bold;
+					}
+				}
+			}
+		}
+		.directior {
+			width: 100%;
+			height: 70px;
+			position: absolute;
+			bottom: -63vw;
+			left: 6vw;
+			font-weight: bold;
 		}
 	}
 }

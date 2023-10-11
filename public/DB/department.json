@@ -3,32 +3,44 @@
     {
       "name": "David",
       "position": "President",
-      "pic": "member1.jpg"
+      "pic": "member1.jpg",
+      "address": "Lorem ipsum dolor sit.",
+      "phone": "010-xxxx-xxxx"
     },
     {
       "name": "Julia",
       "position": "Vice President",
-      "pic": "member2.jpg"
+      "pic": "member2.jpg",
+      "address": "Lorem ipsum dolor sit.",
+      "phone": "010-xxxx-xxxx"
     },
     {
       "name": "Emily",
       "position": "UI Designer",
-      "pic": "member3.jpg"
+      "pic": "member3.jpg",
+      "address": "Lorem ipsum dolor sit.",
+      "phone": "010-xxxx-xxxx"
     },
     {
       "name": "Michael",
       "position": "Front-end Developer",
-      "pic": "member4.jpg"
+      "pic": "member4.jpg",
+      "address": "Lorem ipsum dolor sit.",
+      "phone": "010-xxxx-xxxx"
     },
     {
       "name": "Emma",
       "position": "Back-end Developer",
-      "pic": "member5.jpg"
+      "pic": "member5.jpg",
+      "address": "Lorem ipsum dolor sit.",
+      "phone": "010-xxxx-xxxx"
     },
     {
       "name": "Peter",
       "position": "Project Manager",
-      "pic": "member6.jpg"
+      "pic": "member6.jpg",
+      "address": "Lorem ipsum dolor sit.",
+      "phone": "010-xxxx-xxxx"
     }
   ]
 }
