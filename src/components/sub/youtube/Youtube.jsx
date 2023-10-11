@@ -42,16 +42,14 @@ export default function Youtube() {
 								<p>{desc.length > 10 ? tit.substr(0, 60) + '...' : desc}</p>
 								<span>{date.split('T')[0].split('-').join('.')}</span>
 							</div>
-							<div className='picBox'>
-								<div
-									className='pic'
-									onClick={() => {
-										setIndex(idx);
-										setIsModal(true);
-									}}
-								>
-									<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
-								</div>
+							<div
+								className='picBox'
+								onClick={() => {
+									setIndex(idx);
+									setIsModal(true);
+								}}
+							>
+								<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
 							</div>
 						</article>
 					);
