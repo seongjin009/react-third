@@ -25,7 +25,6 @@ export default function Gallery(opt) {
 
 	const [Open, setOpen] = useState(false);
 
-	//현재 갤러리 타입이 User타입인지 확인하기 위해
 	const [IsUser, setIsUser] = useState(true);
 
 	const fetchData = async (opt) => {
@@ -48,9 +47,7 @@ export default function Gallery(opt) {
 		if (opt.type === 'search') {
 			url = `https://www.flickr.com/services/rest/?method=${method_search}&api_key=${api_key}&per_page=${num}&nojsoncallback=1&format=json&tags=${opt.tags}`;
 		}
-		//만약 특정함수가 promise를 반환한다면 warpping함수로 묶어준뒤 async 지정
-		//각각의 promise 반환 함수 앞쪽에 await를 붙이기만 하면 해당 코드는 동기화됨
-		//지저분하게 depth를 들여쓰기 해가면서 then구문을 호출할 필요가 없음
+
 		const data = await fetch(url);
 		const json = await data.json();
 		console.log(json.photos.photo);
@@ -65,12 +62,10 @@ export default function Gallery(opt) {
 			img.onload = () => {
 				++count;
 				console.log('현재 로딩된 img갯수', count);
-				//interest gallery에서 특정 사용자 갤러리 호출시 이미 interest화면에서 2개의 이미지 이미 캐싱처리 되어 있기 때문에
-				//전체 이미지 개수에서 -2를 빼줘야지 무한로딩 오류 해결
 
 				if (count === (Fix ? imgs.length / 2 - 1 : imgs.length - 2)) {
 					console.log('모든 이미지 소스 렌더링 완료!');
-					//모든 소스 이미지라 랜더링 완료되면 Loader값을 false로 바꿔서 로딩이미지 제거
+
 					setLoader(false);
 					refFrame.current.classList.add('on');
 				}
@@ -78,12 +73,47 @@ export default function Gallery(opt) {
 		});
 	};
 
+	//submit 이벤트 발생시 실행할 함수
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		setIsUser(false);
+		const btns = refbtnSet.current.querySelectorAll('button');
+		btns.forEach((btn) => btn.classList.remove('on'));
+
+		if (refInput.current.value.trim() === '') {
+			return alert('검색어를 입력하세요.');
+		}
+		fetchData({ type: 'search', tags: refInput.current.value });
+		refInput.current.value = '';
+	};
+
+	const handleClickMy = (e) => {
+		setIsUser(true);
+		if (e.target.classList.contains('on')) return;
+		const btns = refbtnSet.current.querySelectorAll('button');
+		btns.forEach((btn) => btn.classList.remove('on'));
+		e.target.classList.add('on');
+		fetchData({ type: 'user', id: my_id });
+	};
+
+	const handleClickInterest = (e) => {
+		setIsUser(false);
+
+		if (e.target.classList.contains('on')) return;
+		const btns = refbtnSet.current.querySelectorAll('button');
+		btns.forEach((btn) => btn.classList.remove('on'));
+		e.target.classList.add('on');
+		fetchData({ type: 'interest' });
+	};
+
+	const handleClickProfile = (e) => {
+		if (IsUser) return;
+		fetchData({ type: 'user', id: e.target.innerText });
+		setIsUser(true);
+	};
+
 	useEffect(() => {
-		//type: 'interest' 인터레스트 방식 갤러리 호출
-		//type: 'user' 사용자 아이디 계정의 갤러리 호출
-		//type: 'search' 검색키워드로 갤러리 호출
-		//fetchData({ type: 'user', id: my_id });
-		//fetchData({ type: 'interest' });
 		fetchData({ type: 'search', tags: 'house' });
 	}, []);
 
@@ -91,60 +121,20 @@ export default function Gallery(opt) {
 		<>
 			<Layout title={'Gallery'}>
 				<div className='searchBox'>
-					<form
-						onSubmit={(e) => {
-							e.preventDefault();
-							//검색 갤ㄹ러리 이벤트 발생시 활성화
-							setIsUser(false);
-							const btns = refbtnSet.current.querySelectorAll('button');
-							btns.forEach((btn) => btn.classList.remove('on'));
-
-							if (refInput.current.value.trim() === '') {
-								return alert('검색어를 입력하세요.');
-							}
-							fetchData({ type: 'search', tags: refInput.current.value });
-							refInput.current.value = '';
-						}}
-					>
+					<form onSubmit={handleSubmit}>
 						<input ref={refInput} type='text' placeholder='검색어를 입력하세요' />
 						<button>검색</button>
 					</form>
 				</div>
-				{/* 각 버튼 클릭 시 on클래스가 있으면 강제 리턴 */}
-				<div className='btnSet' ref={refbtnSet}>
-					<button
-						className='on'
-						onClick={(e) => {
-							//각 버튼 클릭시 해당 버튼에 만약 on클래스가 있으면 이미 활성화 되어 있는 버튼이므로 return으로 종료해서
-							//fetchData함수 호출 방지
 
-							setIsUser(true);
-							if (e.target.classList.contains('on')) return;
-							const btns = refbtnSet.current.querySelectorAll('button');
-							btns.forEach((btn) => btn.classList.remove('on'));
-							e.target.classList.add('on');
-							fetchData({ type: 'user', id: my_id });
-						}}
-					>
+				<div className='btnSet' ref={refbtnSet}>
+					<button className='on' onClick={handleClickMy}>
 						My Gallery
 					</button>
-					<button
-						onClick={(e) => {
-							setIsUser(false);
-							//각 버튼 클릭시 해당 버튼에 만약 on클래스가 있으면 이미 활성화 되어 있는 버튼이므로 return으로 종료해서
-							//fetchData함수 호출 방지
 
-							if (e.target.classList.contains('on')) return;
-							const btns = refbtnSet.current.querySelectorAll('button');
-							btns.forEach((btn) => btn.classList.remove('on'));
-							e.target.classList.add('on');
-							fetchData({ type: 'interest' });
-						}}
-					>
-						Interest Gallery
-					</button>
+					<button onClick={handleClickInterest}>Interest Gallery</button>
 				</div>
-				{/* Loader가 true: 로딩바출력, Loader가 false: 갤러리 프레임 출력 */}
+
 				{Loader && (
 					<img
 						className='loading'
@@ -187,15 +177,7 @@ export default function Gallery(opt) {
 													);
 												}}
 											/>
-											<span
-												onClick={() => {
-													if (IsUser) return;
-													fetchData({ type: 'user', id: data.owner });
-													setIsUser(true);
-												}}
-											>
-												{data.owner}
-											</span>
+											<span onClick={handleClickProfile}>{data.owner}</span>
 										</div>
 									</div>
 								</article>
