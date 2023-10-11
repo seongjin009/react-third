@@ -96,6 +96,9 @@ export default function Gallery(opt) {
 							e.preventDefault();
 							//검색 갤ㄹ러리 이벤트 발생시 활성화
 							setIsUser(false);
+							const btns = refbtnSet.current.querySelectorAll('button');
+							btns.forEach((btn) => btn.classList.remove('on'));
+
 							if (refInput.current.value.trim() === '') {
 								return alert('검색어를 입력하세요.');
 							}
