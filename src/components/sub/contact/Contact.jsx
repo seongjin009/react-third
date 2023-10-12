@@ -151,6 +151,8 @@ export default function Contact() {
 					<div className={`view ${IsMap ? '' : 'on'}`} ref={view}></div>
 					<div className={`map ${IsMap ? 'on' : ''}`} ref={map}></div>
 				</div>
+
+				{/* */}
 				<ul>
 					{info.current.map((el, idx) => (
 						<li

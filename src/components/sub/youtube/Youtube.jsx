@@ -1,5 +1,5 @@
-import Modal from '../../common/modal/Modal';
-import './Youtube.scss';
+import { Link } from 'react-router-dom';
+//import Modal from '../../common/modal/Modal';import './Youtube.scss';
 import Layout from '../../common/layout/Layout';
 import { useEffect, useState } from 'react';
 
@@ -49,20 +49,21 @@ export default function Youtube() {
 									setIsModal(true);
 								}}
 							>
-								<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
+								<Link to={`/youtube/${idx}`}>
+									<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
+								</Link>
 							</div>
 						</article>
 					);
 				})}
 			</Layout>
-			{IsModal && (
-				<Modal setIsModal={setIsModal}>
+
+			{/* {<Modal setIsModal={setIsModal}>
 					<iframe
 						src={`https://www.youtube.com/embed/${Youtube[Index].snippet.resourceId.videoId}`}
 						title='youtube'
 					></iframe>
-				</Modal>
-			)}
+			</Modal> */}
 		</>
 	);
 }
