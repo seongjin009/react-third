@@ -7,12 +7,53 @@
 		background-repeat: no-repeat;
 		background-size: cover;
 	}
+
+	.subPic {
+		position: absolute;
+		width: 39vw;
+		top: 60vh;
+		left: 5.5vw;
+		.Picover {
+			width: 100%;
+			height: 99%;
+			position: absolute;
+			top: 0vh;
+			background: #333;
+			opacity: 0.7;
+			transition: 0.2s;
+		}
+		.line2 {
+			width: 100%;
+			border: 2px solid black;
+			position: absolute;
+			left: -1vw;
+			top: 120%;
+			margin: 10px;
+			transition: 0.2s;
+		}
+
+		img {
+			width: 39vw;
+		}
+		&:hover {
+			.Picover {
+				opacity: 0;
+			}
+			.line2 {
+				width: 70vw;
+			}
+		}
+	}
+
 	.line {
 		width: 63vw;
 		border-bottom: 3px solid black;
 		margin: 10px;
 	}
 	.subtit {
+		position: absolute;
+		top: 75vh;
+		right: 0;
 		width: 50%;
 		font-size: 1rem;
 		float: right;
@@ -31,15 +72,15 @@
 		display: flex;
 		gap: 10px;
 		position: absolute;
-		top: 70%;
+		top: 110vh;
 
 		article {
 			width: 30%;
-
+			filter: grayscale(80%);
+			transition: 0.2s;
 			.pic {
 				width: 100%;
 				height: 25vw;
-				filter: grayscale(20%);
 
 				img {
 					width: 100%;
@@ -61,8 +102,20 @@
 					font-weight: bold;
 				}
 			}
+
+			.line3 {
+				width: 5vw;
+				border: 2px solid black;
+				position: absolute;
+				bottom: -20px;
+				transition: 0.2s;
+			}
 			&:hover {
-				filter: brightness(100%);
+				transform: scale(1.05);
+				filter: grayscale(0%);
+				.line3 {
+					width: 10vw;
+				}
 			}
 		}
 		.directior {
@@ -89,10 +142,10 @@
 			width: 100%;
 			display: flex;
 			flex-wrap: wrap;
-			gap: 10px;
+			gap: 4.5vw;
 			justify-content: space-between;
 			position: relative;
-			top: 70%;
+			top: 50vh;
 
 			article {
 				width: 30%;
@@ -109,6 +162,14 @@
 						font-weight: bold;
 					}
 				}
+				.line3 {
+					width: 10vw;
+				}
+				&:hover {
+					.line3 {
+						width: 15vw;
+					}
+				}
 			}
 			.directior {
 				width: 100%;
@@ -123,10 +184,26 @@
 }
 @media screen and (max-width: $mobile) {
 	.Department {
+		.subtit {
+			position: absolute;
+			top: 68vh;
+			right: 0;
+			width: 50%;
+			font-size: 1rem;
+			float: right;
+			margin: 10px;
+
+			.line1 {
+				border-bottom: 2px solid black;
+				margin: 30px;
+			}
+		}
 		.memberBox {
+			margin-top: -40px;
 			article {
 				width: 100%;
 				margin-bottom: 30px;
+
 				.pic {
 					height: 90vh;
 				}
