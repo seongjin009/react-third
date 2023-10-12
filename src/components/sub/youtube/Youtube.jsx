@@ -56,6 +56,12 @@ export default function Youtube() {
 									<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
 								</Link>
 							</div>
+
+							<div className='picBox1'>
+								<Link to={`/detail/${data.id}`}>
+									<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
+								</Link>
+							</div>
 						</article>
 					);
 				})}
