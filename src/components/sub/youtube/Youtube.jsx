@@ -12,7 +12,7 @@ export default function Youtube() {
 		const api_key = process.env.REACT_APP_YOUTUBE_API;
 		const baseURL = 'https://www.googleapis.com/youtube/v3/playlistItems';
 		const pid = `PLJ0_dUpwgnHGNKFN5G2r6rsMf51JmkB7M`;
-		const num = 6;
+		const num = 1;
 		const resultURL = `${baseURL}?key=${api_key}&part=snippet&playlistId=${pid}&maxResult=${num}`;
 		const data = await fetch(resultURL);
 		const json = await data.json();
@@ -51,7 +51,6 @@ export default function Youtube() {
 								<span>{date.split('T')[0].split('-').join('.')}</span>
 							</div>
 							<div className='picBox'>
-								{/*썸네일 클릭 시 유튜브 링크를 받기 위해서 */}
 								<Link to={`/detail/${data.id}`}>
 									<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
 								</Link>

@@ -5,21 +5,13 @@ import Masonry from 'react-masonry-component';
 import Modal from '../../common/modal/Modal';
 
 export default function Gallery(opt) {
-	let count = 0;
-
 	const refInput = useRef(null);
-
-	const refFrame = useRef(null);
-
-	const [Loader, setLoader] = useState(true);
 
 	const [Pics, setPics] = useState([]);
 
 	const my_id = '199282986@N03';
 
 	const refbtnSet = useRef(null);
-
-	const [Fix, setFix] = useState(false);
 
 	const [ActiveURL, setActiveURL] = useState('');
 
@@ -28,15 +20,12 @@ export default function Gallery(opt) {
 	const [IsUser, setIsUser] = useState(true);
 
 	const fetchData = async (opt) => {
-		setLoader(true);
-
-		refFrame.current.classList.remove('on');
 		let url = '';
 		const api_key = '3d01d56ea3c92153f235a2985a9776f6';
 		const method_interest = 'flickr.interestingness.getList';
 		const method_user = 'flickr.people.getPhotos';
 		const method_search = 'flickr.photos.search';
-		const num = 10;
+		const num = 50;
 
 		if (opt.type === 'interest') {
 			url = `https://www.flickr.com/services/rest/?method=${method_interest}&api_key=${api_key}&per_page=${num}&nojsoncallback=1&format=json`;
@@ -55,22 +44,6 @@ export default function Gallery(opt) {
 			return alert('해당 검색어의 결과값이 없습니다');
 		}
 		setPics(json.photos.photo);
-
-		const imgs = refFrame.current?.querySelectorAll('img');
-
-		imgs.forEach((img) => {
-			img.onload = () => {
-				++count;
-				console.log('현재 로딩된 img갯수', count);
-
-				if (count === (Fix ? imgs.length / 2 - 1 : imgs.length - 2)) {
-					console.log('모든 이미지 소스 렌더링 완료!');
-
-					setLoader(false);
-					refFrame.current.classList.add('on');
-				}
-			};
-		});
 	};
 
 	//submit 이벤트 발생시 실행할 함수
@@ -135,14 +108,7 @@ export default function Gallery(opt) {
 					<button onClick={handleClickInterest}>Interest Gallery</button>
 				</div>
 
-				{Loader && (
-					<img
-						className='loading'
-						src={`${process.env.PUBLIC_URL}/img/loading.gif`}
-						alt='loading'
-					/>
-				)}
-				<div className='picFrame' ref={refFrame}>
+				<div className='picFrame'>
 					<Masonry
 						elementType={'div'}
 						options={{ transitionDuration: '0.5s' }}
@@ -168,7 +134,6 @@ export default function Gallery(opt) {
 												src={`http://farm${data.farm}.staticflickr.com/${data.server}/buddyicons/${data.owner}.jpg`}
 												alt={data.owner}
 												onError={(e) => {
-													setFix(true);
 													//만약 사용자가 프로필 이미지를 올리지 않았을때 엑박이 뜨므로
 													//onError이벤트를 연결해서 대체이미지 출력
 													e.target.setAttribute(
@@ -195,3 +160,12 @@ export default function Gallery(opt) {
 		</>
 	);
 }
+/*
+	클릭한 버튼을 또 클릭했을 때 같은 데이터를 불필요하게 또다시 fetching요청하지 않도록
+	클릭한 버튼에 on이 붙어있을 때 함수 호출을 강제 중지
+
+	현재 출력되는 갤러리 방식이 user type 갤러리일 때 같은 사용자의 갤러리가 보이는 형태이므로 
+	사용자 아이디를 클릭하게되면 같은 데이터 요청을 보내게됨
+	---사용자 타입의 갤러리를 호출할 때 마다 IsUser state값을 true로 변경해서
+	---- 이벤트가 발생할 때마다 IsUser값이 true 사용자 아이디 클릭 이벤트 핸들러 제거
+*/
