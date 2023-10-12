@@ -23,17 +23,33 @@
 		&:nth-of-type(even) {
 			flex-direction: row-reverse;
 			background-color: hsl(150, 100%, 91%);
+
+			.dateBox {
+				width: 50%;
+				position: absolute;
+				bottom: 20%;
+				transform: translateX(27vw);
+			}
 		}
 
 		.titBox {
 			transform: translateY(30%);
 			width: 50%;
 			text-align: center;
+			padding-left: 30px;
+			padding-right: 30px;
 		}
 		.conBox {
 			width: 50%;
 			position: absolute;
 			top: 60%;
+			text-align: center;
+		}
+		.dateBox {
+			width: 50%;
+			position: absolute;
+			bottom: 20%;
+			left: 0;
 			text-align: center;
 		}
 		.picBox {

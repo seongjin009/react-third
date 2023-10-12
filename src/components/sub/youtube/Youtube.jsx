@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom';
 //import Modal from '../../common/modal/Modal';import './Youtube.scss';
 import Layout from '../../common/layout/Layout';
+import './Youtube.scss';
 import { useEffect, useState } from 'react';
 
 export default function Youtube() {
 	const [Youtube, setYoutube] = useState([]);
-	const [IsModal, setIsModal] = useState(false);
-	const [Index, setIndex] = useState(0);
 
 	//async await로 동기화 코드를 좀더 깔끔하게 동기화 처리
 	const fetchYoutube = async () => {
@@ -40,18 +39,13 @@ export default function Youtube() {
 							</div>
 							<div className='conBox'>
 								<p>{desc.length > 10 ? tit.substr(0, 60) + '...' : desc}</p>
+							</div>
+							<div className='dateBox'>
 								<span>{date.split('T')[0].split('-').join('.')}</span>
 							</div>
-							<div
-								className='picBox'
-								onClick={() => {
-									setIndex(idx);
-									setIsModal(true);
-								}}
-							>
-								<Link to={`/youtube/${idx}`}>
-									<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
-								</Link>
+							<div className='picBox'>
+								<link to={`/detail/${data.snippet.resourceId.videoId}`} />
+								<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
 							</div>
 						</article>
 					);
