@@ -44,8 +44,9 @@ export default function Youtube() {
 								<span>{date.split('T')[0].split('-').join('.')}</span>
 							</div>
 							<div className='picBox'>
-								<link to={`/detail/${data.snippet.resourceId.videoId}`} />
-								<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
+								<Link to={`/detail/${data.snippet.resourceId.videoId}`}>
+									<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
+								</Link>
 							</div>
 						</article>
 					);

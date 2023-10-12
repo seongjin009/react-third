@@ -27,9 +27,9 @@ function App() {
 			<Route path='/gallery' component={Gallery} />
 			<Route path='/youtube' component={Youtube} />
 			<Route path='/detail/:id' component={Detail} />
-
 			<Route path='/members' component={Members} />
 			<Route path='/contact' component={Contact} />
+			{/* params는 url에 특정 컴포넌트를 연결할 때 url로 정보값을 같이 전달 경로/:변수명 */}
 		</>
 	);
 }
