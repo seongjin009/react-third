@@ -1,10 +1,14 @@
 .Contact {
+	h1 {
+		text-align: center;
+	}
 	figure {
 		background: orange;
 	}
 	#mailBox {
 		width: 50%;
 		margin-bottom: 100px;
+		margin: 0 auto;
 
 		.upper {
 			width: 100%;

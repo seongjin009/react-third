@@ -151,14 +151,13 @@ export default function Contact() {
 						<label>Message</label>
 						<textarea name='message' className='msgEl' />
 					</div>
-
-					<div className='btnSet'>
-						<input type='reset' value='Cancel' />
-						<input type='submit' value='Send' />
-					</div>
 				</form>
 			</div>
 			<div id='mapBox'>
+				<div className='btnSet'>
+					<input type='reset' value='Cancel' />
+					<input type='submit' value='Send' />
+				</div>
 				<button onClick={() => setTraffic(!Traffic)}>
 					{Traffic ? '교통정보 끄기' : '교통정보 켜기'}
 				</button>
