@@ -12,7 +12,7 @@ export default function Youtube() {
 		const api_key = process.env.REACT_APP_YOUTUBE_API;
 		const baseURL = 'https://www.googleapis.com/youtube/v3/playlistItems';
 		const pid = `PLJ0_dUpwgnHGNKFN5G2r6rsMf51JmkB7M`;
-		const num = 5;
+		const num = 6;
 		const resultURL = `${baseURL}?key=${api_key}&part=snippet&playlistId=${pid}&maxResult=${num}`;
 		const data = await fetch(resultURL);
 		const json = await data.json();
@@ -27,6 +27,11 @@ export default function Youtube() {
 		<>
 			<Layout title={'Youtube'}>
 				<div className='line'></div>
+				<div className='name'>
+					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora, id?
+					<div className='line2'></div>
+				</div>
+
 				{Youtube.map((data, idx) => {
 					let tit = data.snippet.title;
 					let desc = data.snippet.description;
@@ -35,16 +40,19 @@ export default function Youtube() {
 					return (
 						<article key={idx}>
 							<div className='titBox'>
-								<h2>{tit.length > 100 ? tit.substr(0, 60) + '...' : tit}</h2>
+								<h2>{tit.length > 6 ? tit.substr(0, 15) + '...' : tit}</h2>
 							</div>
 							<div className='conBox'>
 								<p>{desc.length > 10 ? tit.substr(0, 60) + '...' : desc}</p>
+								<div className='line1'></div>
 							</div>
+
 							<div className='dateBox'>
 								<span>{date.split('T')[0].split('-').join('.')}</span>
 							</div>
 							<div className='picBox'>
-								<Link to={`/detail/${data.snippet.resourceId.videoId}`}>
+								{/*썸네일 클릭 시 유튜브 링크를 받기 위해서 */}
+								<Link to={`/detail/${data.id}`}>
 									<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
 								</Link>
 							</div>

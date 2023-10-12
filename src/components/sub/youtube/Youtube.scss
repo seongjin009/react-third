@@ -1,9 +1,26 @@
 .Youtube {
+	position: relative;
 	.line {
 		width: 30vw;
 		height: 1px;
 		border: 1px solid black;
 		margin-bottom: 100px;
+	}
+	.name {
+		position: absolute;
+		right: 50px;
+		top: 53vh;
+		font-size: 1.5rem;
+		margin-bottom: 10vh;
+		.line2 {
+			position: absolute;
+			width: 50vw;
+			height: 1px;
+			border: 1px solid black;
+			right: 10px;
+			top: 9vh;
+			margin-bottom: 100px;
+		}
 	}
 	figure {
 	}
@@ -14,11 +31,20 @@
 	article {
 		width: 60%;
 		height: 40vh;
-		margin: 0 auto;
+		margin: 5vw auto;
 		display: flex;
 		justify-content: space-between;
 		position: relative;
 		border: 1px solid black;
+		transform: translateY(10vh);
+		filter: grayscale(80%);
+
+		opacity: 0.5;
+
+		&:hover {
+			filter: grayscale(0%);
+			opacity: 1;
+		}
 
 		&:nth-of-type(even) {
 			flex-direction: row-reverse;
@@ -31,6 +57,15 @@
 				transform: translateX(27vw);
 			}
 		}
+		&:nth-of-type(3) {
+			background-color: lightgoldenrodyellow;
+		}
+		&:nth-of-type(4) {
+			background-color: lightcoral;
+		}
+		&:nth-of-type(5) {
+			background-color: lightpink;
+		}
 
 		.titBox {
 			transform: translateY(30%);
@@ -42,9 +77,17 @@
 		.conBox {
 			width: 50%;
 			position: absolute;
-			top: 60%;
+			top: 55%;
 			text-align: center;
+
+			.line1 {
+				width: 18vw;
+				margin: 0 auto;
+				margin-top: 20px;
+				border-bottom: 1px solid black;
+			}
 		}
+
 		.dateBox {
 			width: 50%;
 			position: absolute;
@@ -52,6 +95,7 @@
 			left: 0;
 			text-align: center;
 		}
+
 		.picBox {
 			width: 50%;
 			height: 40vh;
