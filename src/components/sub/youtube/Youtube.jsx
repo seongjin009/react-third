@@ -40,6 +40,7 @@ export default function Youtube() {
 					return (
 						<article key={idx}>
 							<div className='titBox'>
+								<div className='line1'></div>
 								<h2>{tit.length > 6 ? tit.substr(0, 15) + '...' : tit}</h2>
 							</div>
 							<div className='conBox'>
