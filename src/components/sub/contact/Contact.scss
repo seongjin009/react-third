@@ -10,36 +10,41 @@
 		flex-wrap: wrap;
 		justify-content: space-between;
 		#mailBox {
-			width: 50%;
-			margin: 0px auto;
+			width: 100%;
+			margin: 15vh auto;
 			margin-bottom: 100px;
 			padding-right: 50px;
-
-			.upper {
+			.lineBox {
 				width: 100%;
-				display: flex;
-				margin-bottom: 50px;
-				justify-content: space-between;
-				span {
-					width: 48%;
+				border-top: 1px solid black;
+				border-bottom: 1px solid black;
+				padding: 20px;
+				.upper {
+					width: 100%;
+					display: flex;
+					margin: 0 0 50px 20px;
 
-					label {
-						font: bold 1rem/1 'arial';
-						color: #555;
-						margin-right: 20px;
-						position: relative;
-						top: 20px;
-					}
-					input[type='text'],
-					input[type='email'] {
-						border: none;
-						padding: 10px 20px;
-						margin-right: 50px;
-						outline: none;
-						transition: 0.5s;
+					span {
+						width: 48%;
 
-						&:focus {
-							background: lightcyan;
+						label {
+							font: bold 1rem/1 'arial';
+							color: #555;
+							margin-right: 20px;
+							position: relative;
+							top: 5px;
+						}
+						input[type='text'],
+						input[type='email'] {
+							border: none;
+							padding: 10px 20px;
+							margin-right: 50px;
+							outline: none;
+							transition: 0.5s;
+
+							&:focus {
+								background: lightcyan;
+							}
 						}
 					}
 				}
@@ -98,12 +103,22 @@
 	.btnSet {
 		width: 70vw;
 		margin: 0px auto;
+		.traBtn,
+		.resBtn,
+		.roadBtn {
+			width: 10vw;
+			height: 5vh;
+			border: 1px solid black;
+			margin: 10px;
+			cursor: pointer;
+		}
 	}
 	.container {
-		width: 100%;
-		height: 60vh;
+		width: 68vw;
+		height: 40vh;
 		background: #111;
 		position: relative;
+		margin: 0 auto;
 
 		.map,
 		.view {
@@ -127,11 +142,23 @@
 		display: flex;
 		gap: 20px;
 
+		width: 30vw;
+		margin: 0px auto 30px;
+
+		background: white;
+
 		li {
+			width: 10vw;
+
 			cursor: pointer;
+			text-align: center;
+			font-size: 0.8rem;
+			color: black;
 		}
 		li.on {
-			color: hotpink;
+			color: white;
+			background: #6894f7;
+			border-radius: 10px;
 		}
 	}
 }

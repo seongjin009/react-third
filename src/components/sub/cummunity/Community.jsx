@@ -15,7 +15,7 @@ export default function Community() {
 	const refEditTextarea = useRef(null);
 	//해당 컴포넌트가 처음 마운트시에는 로컬저장소에 값이 없기 때문에 빈배열 리턴
 	//저장소에 값이 있으면 해당값을 parsing된 데이터가 있는 배열값이 리턴
-	const [Posts, setPosts] = useState([getLocalDate()]);
+	const [Posts, setPosts] = useState(getLocalDate());
 	const [Allowed, setAllowed] = useState(true);
 
 	const resetForm = () => {
@@ -28,7 +28,14 @@ export default function Community() {
 			return alert('제목과 본문을 모두 입력하세요.');
 		}
 		//기존 Posts 배열값을 Deep copy해서 가져온뒤, 그 뒤에 추가로 방금 입력한 객체를 배열에 추가
-		setPosts([{ title: refInput.current.value, content: refTextarea.current.value }, ...Posts]);
+		setPosts([
+			{
+				title: refInput.current.value,
+				content: refTextarea.current.value,
+				data: new Date(),
+			},
+			...Posts,
+		]);
 		resetForm();
 	};
 	const deletePost = (delIndex) => {
@@ -97,6 +104,13 @@ export default function Community() {
 
 			<div className='showBox'>
 				{Posts.map((post, idx) => {
+					const string = JSON.stringify(post.data);
+
+					const [year, month, date] = string.split('T')[0].split('"')[1].split('-');
+					let [hour, min, sec] = string.split('T')[1].split('.')[0].split(':');
+					hour = parseInt(hour) + 9;
+					hour >= 24 && (hour = hour - 24);
+
 					if (post.enableUpdate) {
 						return (
 							<article key={idx}>
@@ -104,17 +118,17 @@ export default function Community() {
 									<input type='text' defaultValue={post.title} ref={refEditInput} />
 									<br />
 									<textarea defaultValue={post.content} ref={refEditTextarea} />
-								</div>
 
-								<button onClick={() => disableUpdate(idx)}>Cancel</button>
-								<button
-									onClick={() => {
-										updatePost(idx);
-										disableUpdate(idx);
-									}}
-								>
-									Update
-								</button>
+									<button onClick={() => disableUpdate(idx)}>Cancel</button>
+									<button
+										onClick={() => {
+											updatePost(idx);
+											disableUpdate(idx);
+										}}
+									>
+										Update
+									</button>
+								</div>
 							</article>
 						);
 					}
@@ -123,6 +137,8 @@ export default function Community() {
 							<div className='txt'>
 								<h2>{post.title}</h2>
 								<p>{post.content}</p>
+								<p>{`글 작성일 : ${year}-${month}-${date}`}</p>
+								<p>{`글 작성시간 : ${hour}:${min}:${sec}`}</p>
 							</div>
 							<nav className='btnSet'>
 								<button onClick={() => enableUpdate(idx)}>Edit</button>
