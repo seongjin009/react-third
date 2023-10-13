@@ -45,6 +45,7 @@ export default function Community() {
 	};
 	//해당 글을 출력모드로 만드는 함수
 	const disableUpdate = (editIndex) => {
+		setAllowed(true);
 		setPosts(
 			Posts.map((post, idx) => {
 				if (editIndex === idx) post.enableUpdate = false;
