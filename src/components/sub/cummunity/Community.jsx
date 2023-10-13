@@ -1,7 +1,6 @@
 import Layout from '../../common/layout/Layout';
+import './Community.scss';
 import { useRef, useState } from 'react';
-
-import('./Community.scss');
 
 export default function Community() {
 	const refInput = useRef(null);
@@ -26,8 +25,21 @@ export default function Community() {
 		setPosts(Posts.filter((_, idx) => delIndex !== idx));
 	};
 
+	//해당 글을 수정모드로 변경시키는 함수
+	const enableUpdate = (editIndex) => {
+		setPosts(
+			//Posts 배열값을 반복돌면서 인수로 전달된 수정할 포스트의 순번값과 현재반복도는 포스트 순번값이 일치하면
+			//해당글을 수정처리 해야되느로 해당 객체에 enableUpdate =true값을 추가
+			Posts.map((post, idx) => {
+				if (editIndex === idx) post.enableUpdate = true;
+
+				return post;
+			})
+		);
+	};
+
 	return (
-		<Layout title={'Communtiy'}>
+		<Layout title={'Community'}>
 			<div className='inputBox'>
 				<input ref={refInput} type='text' placeholder='제목을 입력하세요.' />
 				<br />
@@ -41,12 +53,32 @@ export default function Community() {
 
 			<div className='showBox'>
 				{Posts.map((post, idx) => {
+					if (post.enableUpdate) {
+						return (
+							<article key={idx}>
+								<div className='txt'>
+									<input
+										type='text'
+										value={post.title}
+										onChange={(e) => console.log(e.target.value)}
+									/>
+									<br />
+									<textarea value={post.content} onChange={(e) => console.log(e.target.value)} />
+								</div>
+
+								<button>Cancel</button>
+								<button>Update</button>
+							</article>
+						);
+					}
 					return (
 						<article key={idx}>
-							<h2>{post.title}</h2>
-							<p>{post.content}</p>
-							<nav>
-								<button>Edit</button>
+							<div className='txt'>
+								<h2>{post.title}</h2>
+								<p>{post.content}</p>
+							</div>
+							<nav className='btnSet'>
+								<button onClick={() => enableUpdate(idx)}>Edit</button>
 								<button onClick={() => deletePost(idx)}>Delete</button>
 							</nav>
 						</article>

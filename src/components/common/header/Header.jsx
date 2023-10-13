@@ -35,7 +35,7 @@ export default function Header({ isMain }) {
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to='/Community' activeClassName='active'>
+					<NavLink to='/community' activeClassName='active'>
 						Community
 					</NavLink>
 				</li>

@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
-//import Modal from '../../common/modal/Modal';import './Youtube.scss';
 import Layout from '../../common/layout/Layout';
-import './Youtube.scss';
 import { useEffect, useState } from 'react';
 
+import './Youtube.scss';
 export default function Youtube() {
 	const [Youtube, setYoutube] = useState([]);
 
