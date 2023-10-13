@@ -9,6 +9,7 @@ import Contact from './components/sub/contact/Contact';
 import Community from './components/sub/cummunity/Community';
 
 import Detail from './components/sub/youtube/Detail';
+import Main from './components/main/mainWrap/Main';
 
 function App() {
 	return (
@@ -17,7 +18,9 @@ function App() {
 			<Switch>
 				<Route exact path='/'>
 					{/* 메인페이지 전용 헤더 */}
+
 					<Header isMain={true} />
+					<Main />
 				</Route>
 				<Route path='/'>
 					{/* 서브페이지 전용 헤더 */}
