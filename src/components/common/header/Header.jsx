@@ -34,6 +34,11 @@ export default function Header({ isMain }) {
 						Contact
 					</NavLink>
 				</li>
+				<li>
+					<NavLink to='/Community' activeClassName='active'>
+						Community
+					</NavLink>
+				</li>
 			</ul>
 		</header>
 	);

@@ -138,31 +138,33 @@ export default function Contact() {
 	};
 	return (
 		<Layout title={'Contact'}>
-			<div id='mailBox'>
-				<form ref={form} onSubmit={sendEmail}>
-					<div className='upper'>
-						<label>Name</label>
-						<input type='text' name='user_name' className='nameEl' />
-						<label>Email</label>
-						<input type='email' name='user_email' className='emailEl' />
-					</div>
+			<div className='upperBox'>
+				<div id='mailBox'>
+					<form ref={form} onSubmit={sendEmail}>
+						<div className='upper'>
+							<label>Name</label>
+							<input type='text' name='user_name' className='nameEl' />
+							<label>Email</label>
+							<input type='email' name='user_email' className='emailEl' />
+						</div>
 
-					<div className='lower'>
-						<label>Message</label>
-						<textarea name='message' className='msgEl' />
-					</div>
-				</form>
+						<div className='lower'>
+							<label>Message</label>
+							<textarea name='message' className='msgEl' />
+						</div>
+					</form>
+				</div>
+				<div id='etc'></div>
 			</div>
 			<div id='mapBox'>
 				<div className='btnSet'>
-					<input type='reset' value='Cancel' />
-					<input type='submit' value='Send' />
+					<button onClick={() => setTraffic(!Traffic)}>
+						{Traffic ? '교통정보 끄기' : '교통정보 켜기'}
+					</button>
+
+					<button onClick={setCenter}>지도 위치 초기화</button>
+					<button onClick={() => setIsMap(!IsMap)}>{IsMap ? '로드뷰보기' : '지도보기'}</button>
 				</div>
-				<button onClick={() => setTraffic(!Traffic)}>
-					{Traffic ? '교통정보 끄기' : '교통정보 켜기'}
-				</button>
-				<button onClick={setCenter}>지도 위치 초기화</button>
-				<button onClick={() => setIsMap(!IsMap)}>{IsMap ? '로드뷰보기' : '지도보기'}</button>
 				<div className='container'>
 					<div className={`view ${IsMap ? '' : 'on'}`} ref={view}></div>
 					<div className={`map ${IsMap ? 'on' : ''}`} ref={map}></div>
