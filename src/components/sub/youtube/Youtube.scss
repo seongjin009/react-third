@@ -1,187 +1,189 @@
 .Youtube {
 	position: relative;
-}
 
-.content {
-	width: 905px;
+	.content {
+		width: 905px;
 
-	h1 {
-		text-align: center;
-	}
-	.line {
-		width: 50vw;
-		height: 1px;
-		border: 1px solid black;
-		margin-bottom: 100px;
-		margin: 0 auto;
-	}
-	.name {
-		position: absolute;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		top: 70vh;
-		font-size: 1.5rem;
-		margin-bottom: 10vh;
-		margin: 0 auto;
-		.line2 {
-			position: absolute;
+		h1 {
+			text-align: center;
+		}
+		.line {
 			width: 50vw;
 			height: 1px;
 			border: 1px solid black;
-
-			top: 15vh;
 			margin-bottom: 100px;
+			margin: 0 auto;
 		}
-	}
-	article {
-		width: 800px;
-		height: 40vh;
-		margin: 5vw auto;
-		display: flex;
-		justify-content: space-between;
-		position: relative;
-		top: 15vw;
-		z-index: 1;
-
-		filter: grayscale(80%);
-
-		transition: 0.3s;
-		opacity: 0.5;
-		box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.3);
-
-		&:nth-of-type(1) {
-			.titBox {
-				transform: translateX(10%) translateY(25%);
-
+		.name {
+			position: absolute;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			top: 70vh;
+			font-size: 1.5rem;
+			margin-bottom: 10vh;
+			margin: 0 auto;
+			.line2 {
 				position: absolute;
-				right: 0;
-				top: 4vw;
-			}
-			.conBox {
-				position: absolute;
-				right: 0;
-			}
-			.dateBox {
-				margin-left: 28vw;
+				width: 50vw;
+				height: 1px;
+				border: 1px solid black;
+
+				top: 15vh;
+				margin-bottom: 100px;
 			}
 		}
+		article {
+			width: 800px;
+			height: 40vh;
+			margin: 5vw auto;
+			display: flex;
+			justify-content: space-between;
+			position: relative;
+			top: 15vw;
+			z-index: 1;
 
-		&:hover {
-			filter: grayscale(0%);
-			opacity: 1;
-			.titBox {
-				.line1 {
-					width: 18vw;
-					border: 1px solid white;
+			filter: grayscale(80%);
+
+			transition: 0.3s;
+			opacity: 0.5;
+			box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.3);
+
+			&:nth-of-type(1) {
+				.titBox {
+					transform: translateX(10%) translateY(25%);
+
+					position: absolute;
+					right: 0;
+					top: 4vw;
 				}
-				h2 {
+				.conBox {
+					position: absolute;
+					right: 0;
+				}
+				.dateBox {
+					margin-left: 28vw;
+				}
+			}
+
+			&:hover {
+				filter: grayscale(0%);
+				opacity: 1;
+				.titBox {
+					.line1 {
+						width: 18vw;
+						border: 1px solid white;
+					}
+					h2 {
+						color: white;
+					}
+				}
+				.conBox {
+					p {
+						color: white;
+					}
+					.line1 {
+						width: 18vw;
+						border: 1px solid white;
+					}
+				}
+				.dateBox {
 					color: white;
 				}
+				.picBox {
+					transform: scale(1.03);
+					filter: blur(5px);
+				}
+			}
+
+			.titBox {
+				.line1 {
+					transition: 0.3s;
+
+					width: 4vw;
+					margin: 0 auto;
+					margin-top: 20px;
+					border-bottom: 1px solid #000;
+					margin-bottom: 10px;
+				}
+				h2 {
+					font-size: 1.7rem;
+					color: #000;
+					transition: 0.3s;
+				}
+				transform: translateY(30%) translateX(-10%);
+				width: 60%;
+				text-align: center;
+				padding-left: 30px;
+				padding-right: 30px;
+				align-items: center;
 			}
 			.conBox {
 				p {
-					color: white;
+					font-size: 1.3rem;
+					font-weight: bold;
+
+					color: #000;
+					opacity: 1;
+					transition: 0.3s;
 				}
+				width: 50%;
+				position: absolute;
+				top: 55%;
+				text-align: center;
+
 				.line1 {
-					width: 18vw;
-					border: 1px solid white;
+					transition: 0.3s;
+
+					width: 4vw;
+					margin: 0 auto;
+					margin-top: 20px;
+					border-bottom: 1px solid #000;
 				}
 			}
+
 			.dateBox {
-				color: white;
+				transition: 0.3s;
+
+				color: #000;
+				width: 50%;
+				position: absolute;
+				bottom: 20%;
+				left: 0;
+				text-align: center;
 			}
+
 			.picBox {
-				transform: scale(1.03);
-				filter: blur(5px);
-			}
-		}
-
-		.titBox {
-			.line1 {
-				transition: 0.3s;
-
-				width: 4vw;
-				margin: 0 auto;
-				margin-top: 20px;
-				border-bottom: 1px solid #000;
-				margin-bottom: 10px;
-			}
-			h2 {
-				font-size: 1.7rem;
-				color: #000;
-				transition: 0.3s;
-			}
-			transform: translateY(30%) translateX(-10%);
-			width: 60%;
-			text-align: center;
-			padding-left: 30px;
-			padding-right: 30px;
-			align-items: center;
-		}
-		.conBox {
-			p {
-				font-size: 1.3rem;
-				font-weight: bold;
-
-				color: #000;
-				opacity: 1;
-				transition: 0.3s;
-			}
-			width: 50%;
-			position: absolute;
-			top: 55%;
-			text-align: center;
-
-			.line1 {
-				transition: 0.3s;
-
-				width: 4vw;
-				margin: 0 auto;
-				margin-top: 20px;
-				border-bottom: 1px solid #000;
-			}
-		}
-
-		.dateBox {
-			transition: 0.3s;
-
-			color: #000;
-			width: 50%;
-			position: absolute;
-			bottom: 20%;
-			left: 0;
-			text-align: center;
-		}
-
-		.picBox {
-			width: 100%;
-			height: 40vh;
-			overflow: hidden;
-			position: absolute;
-			z-index: -1;
-
-			right: 0;
-
-			img {
 				width: 100%;
-				height: 100%;
-				object-fit: cover;
-				transform: scale(1.5);
-			}
-		}
-		.picBox1 {
-			width: 100%;
-			height: 40vh;
-			overflow: hidden;
-			position: absolute;
-			z-index: -1;
-			right: 0;
+				height: 40vh;
+				overflow: hidden;
+				position: absolute;
+				z-index: -1;
+				transition: 0.2s;
 
-			img {
+				right: 0;
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					transform: scale(1.5);
+				}
+			}
+			.picBox1 {
 				width: 100%;
-				height: 100%;
-				object-fit: cover;
-				transform: scale(1.5);
+				height: 40vh;
+				overflow: hidden;
+				position: absolute;
+				z-index: -1;
+				right: 0;
+				transition: 0.2s;
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					transform: scale(1.5);
+				}
 			}
 		}
 	}

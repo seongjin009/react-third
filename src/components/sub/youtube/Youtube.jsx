@@ -26,10 +26,12 @@ export default function Youtube() {
 	return (
 		<>
 			<Layout title={'Youtube'}>
-				<div className='line'></div>
-				<div className='name'>
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora, id?
-					<div className='line2'></div>
+				<div className='subtit'>
+					<div className='line'></div>
+					<div className='name'>
+						Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora, id?
+						<div className='line2'></div>
+					</div>
 				</div>
 
 				{Youtube.map((data, idx) => {
@@ -39,17 +41,19 @@ export default function Youtube() {
 
 					return (
 						<article key={idx}>
-							<div className='titBox'>
-								<div className='line1'></div>
-								<h2>{tit.length > 6 ? tit.substr(0, 15) + '...' : tit}</h2>
-							</div>
-							<div className='conBox'>
-								<p>{desc.length > 10 ? tit.substr(0, 60) + '...' : desc}</p>
-								<div className='line1'></div>
-							</div>
+							<div className='txtBox'>
+								<div className='titBox'>
+									<div className='line1'></div>
+									<h2>{tit.length > 6 ? tit.substr(0, 15) + '...' : tit}</h2>
+								</div>
+								<div className='conBox'>
+									<p>{desc.length > 10 ? tit.substr(0, 60) + '...' : desc}</p>
+									<div className='line1'></div>
+								</div>
 
-							<div className='dateBox'>
-								<span>{date.split('T')[0].split('-').join('.')}</span>
+								<div className='dateBox'>
+									<span>{date.split('T')[0].split('-').join('.')}</span>
+								</div>
 							</div>
 							<div className='picBox'>
 								<Link to={`/detail/${data.id}`}>
