@@ -1,13 +1,21 @@
 import Layout from '../../common/layout/Layout';
 import './Community.scss';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 export default function Community() {
+	//로컬데이터의 값을 parsing해서
+	const getLocalDate = () => {
+		const data = localStorage.getItem('post');
+		if (data) return JSON.parse(data);
+		else return [];
+	};
 	const refInput = useRef(null);
 	const refTextarea = useRef(null);
 	const refEditInput = useRef(null);
 	const refEditTextarea = useRef(null);
-	const [Posts, setPosts] = useState([]);
+	//해당 컴포넌트가 처음 마운트시에는 로컬저장소에 값이 없기 때문에 빈배열 리턴
+	//저장소에 값이 있으면 해당값을 parsing된 데이터가 있는 배열값이 리턴
+	const [Posts, setPosts] = useState([getLocalDate()]);
 	const [Allowed, setAllowed] = useState(true);
 
 	const resetForm = () => {
@@ -24,8 +32,10 @@ export default function Community() {
 		resetForm();
 	};
 	const deletePost = (delIndex) => {
-		//기존의 포스트 배열값을 반복 돌면서 인수로 전달된 삭제 순번값과 현재 반복되는 배열의 순번값이 같이 않은 것만 리턴
-		setPosts(Posts.filter((_, idx) => delIndex !== idx));
+		if (window.confirm('정말 해당 게시글을 삭제하겠습니까?')) {
+			//기존의 포스트 배열값을 반복 돌면서 인수로 전달된 삭제 순번값과 현재 반복되는 배열의 순번값이 같이 않은 것만 리턴
+			setPosts(Posts.filter((_, idx) => delIndex !== idx));
+		}
 	};
 
 	//해당 글을 수정모드로 변경시키는 함수
@@ -67,6 +77,10 @@ export default function Community() {
 			})
 		);
 	};
+
+	useEffect(() => {
+		localStorage.setItem('post', JSON.stringify(Posts));
+	}, [Posts]);
 
 	return (
 		<Layout title={'Community'}>
@@ -127,4 +141,11 @@ export default function Community() {
   Update : 게시글 수정
   Delete : 게시글 삭제
   localStorage : 모든 브라우저가 가지고 있는 경량의 저장소 (문자열: 5MB)
+
+	로컬 저장소에 데이터 저장
+	localStorage.setItem({key:'value})
+
+	로컬 저장소에 데이터 가져옴
+	localStorage.getItem(key)
+	문자화되어있는 객체를 다시 parsing해서 호출 
 */
