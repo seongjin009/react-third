@@ -214,12 +214,15 @@ export default function Contact() {
 						</form>
 					</div>
 				</div>
-
-				<div id='etc'>
-					Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit, id nesciunt? Dolores
-					architecto quas voluptate dolorem impedit ab dolore, itaque blanditiis iste esse delectus
-					libero ipsum repudiandae porro nulla fuga.
+				<div className='lineBox1'>
+					<div className='marker'></div>
+					<div id='etc'>
+						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit, id nesciunt? Dolores
+						architecto quas voluptate dolorem impedit ab dolore, itaque blanditiis iste esse
+						delectus libero ipsum repudiandae porro nulla fuga.
+					</div>
 				</div>
+				<div className='imgBox'></div>
 			</div>
 		</Layout>
 	);
