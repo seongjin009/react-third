@@ -1,8 +1,9 @@
-import { Link } from 'react-router-dom';
 import Layout from '../../common/layout/Layout';
-import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
+import { useEffect, useState } from 'react';
 import './Youtube.scss';
+
 export default function Youtube() {
 	const [Youtube, setYoutube] = useState([]);
 

@@ -5,6 +5,8 @@ import { useRef, useState } from 'react';
 export default function Community() {
 	const refInput = useRef(null);
 	const refTextarea = useRef(null);
+	const refEditInput = useRef(null);
+	const refEditTextarea = useRef(null);
 	const [Posts, setPosts] = useState([]);
 
 	const resetForm = () => {
@@ -46,6 +48,20 @@ export default function Community() {
 			})
 		);
 	};
+	//실제 글 수정하는 함수
+	const updatePost = (updateIndex) => {
+		//setPosts로 기존 Post배열같은 덮어쓰기해서 변경
+		//리엑트에서는 참조형 자료는 무조건 배열값을 Deep copy 한뒤 변경
+		setPosts(
+			Posts.map((post, idx) => {
+				if (updateIndex === idx) {
+					post.title = refEditInput.current.value;
+					post.content = refEditTextarea.current.value;
+				}
+				return post;
+			})
+		);
+	};
 
 	return (
 		<Layout title={'Community'}>
@@ -66,13 +82,20 @@ export default function Community() {
 						return (
 							<article key={idx}>
 								<div className='txt'>
-									<input type='text' defaultValue={post.title} />
+									<input type='text' defaultValue={post.title} ref={refEditInput} />
 									<br />
-									<textarea defaultValue={post.content} />
+									<textarea defaultValue={post.content} ref={refEditTextarea} />
 								</div>
 
 								<button onClick={() => disableUpdate(idx)}>Cancel</button>
-								<button>Update</button>
+								<button
+									onClick={() => {
+										updatePost(idx);
+										disableUpdate(idx);
+									}}
+								>
+									Update
+								</button>
 							</article>
 						);
 					}
