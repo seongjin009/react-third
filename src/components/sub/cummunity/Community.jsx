@@ -37,6 +37,15 @@ export default function Community() {
 			})
 		);
 	};
+	//해당 글을 출력모드로 만드는 함수
+	const disableUpdate = (editIndex) => {
+		setPosts(
+			Posts.map((post, idx) => {
+				if (editIndex === idx) post.enableUpdate = false;
+				return post;
+			})
+		);
+	};
 
 	return (
 		<Layout title={'Community'}>
@@ -57,16 +66,12 @@ export default function Community() {
 						return (
 							<article key={idx}>
 								<div className='txt'>
-									<input
-										type='text'
-										value={post.title}
-										onChange={(e) => console.log(e.target.value)}
-									/>
+									<input type='text' defaultValue={post.title} />
 									<br />
-									<textarea value={post.content} onChange={(e) => console.log(e.target.value)} />
+									<textarea defaultValue={post.content} />
 								</div>
 
-								<button>Cancel</button>
+								<button onClick={() => disableUpdate(idx)}>Cancel</button>
 								<button>Update</button>
 							</article>
 						);
