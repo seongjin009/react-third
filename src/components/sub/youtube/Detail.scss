@@ -6,6 +6,7 @@
 			text-align: center;
 		}
 		.arti {
+			background: #fff;
 			width: 70vw;
 			margin: 0px auto;
 			border: 2px solid black;
@@ -31,29 +32,33 @@
 			}
 			.subar {
 				width: 50vw;
-				height: 6vh;
+				height: 15vh;
 				position: absolute;
 				top: 11vw;
 				border-left: 1px solid black;
 				right: 0;
 				p {
-					font-size: 1vw;
-
+					font-style: 'arial';
+					font-size: 1.2vw;
+					text-align: center;
 					margin: 10px;
 					margin-bottom: 30px;
 				}
 			}
 			.txtBox {
 				width: 10vw;
-				height: 50vw;
+				height: 10vw;
 				position: absolute;
+				top: 0;
 				span {
+					font-size: 1.2vw;
+					gap: 0.5vw;
 				}
 			}
 			.vidBox {
 				position: relative;
 				margin-top: 3vw;
-				width: 100%;
+				width: 100vw;
 				height: 60vw;
 
 				iframe {
