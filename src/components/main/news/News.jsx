@@ -7,7 +7,8 @@ function News() {
 	//저장소값이 없을 때 빈배열이 반환되는 구문을 추가 (중요)
 	const getLocalData = () => {
 		const data = localStorage.getItem('post');
-		return JSON.parse(data);
+		if (data) return JSON.parse(data);
+		else return [];
 	};
 	const [Post] = useState(getLocalData());
 
