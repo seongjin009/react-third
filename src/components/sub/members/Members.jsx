@@ -14,7 +14,7 @@ export default function Members() {
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
-		console.log(name, value);
+		setVal({ ...Val, [name]: value });
 	};
 	return (
 		<Layout title={'Members'}>
