@@ -1,19 +1,28 @@
 .Community {
+	background: #000;
+	h1 {
+		color: #fff !important;
+	}
+
 	.content {
+		text-align: center;
+		font-size: 1rem;
 		.inputBox {
 			width: 100%;
-			border: 1px solid #ddd;
 			padding: 50px;
 			margin-bottom: 50px;
+			text-align: center;
 
 			input[type='text'],
 			textarea {
-				width: 50%;
+				width: 70%;
 				padding: 8px 10px;
-				border: 1px solid #aaa;
+				border: 1px solid #bbb;
+				color: #000;
 				resize: none;
+
 				margin-bottom: 10px;
-				background: #f0fdff;
+				background: #bbb;
 			}
 			.btnSet {
 				button {
@@ -25,21 +34,34 @@
 					margin-right: 20px;
 					color: #ffff;
 					cursor: pointer;
+					border-radius: 10px;
+					transition: 0.2s;
+
+					&:hover {
+						background: #ddd;
+						color: #000;
+					}
 				}
 			}
 		}
 		.showBox {
 			width: 100%;
-			border: 1px solid #aaa;
 			padding: 50px;
+			text-align: left;
 			article {
-				background: #fff;
+				background: #ccc;
 				padding: 30px;
 				margin-bottom: 40px;
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
 				flex-wrap: wrap;
+				transition: 0.3s;
+
+				&:hover {
+					transform: scale(1.05);
+					background-color: #eee;
+				}
 
 				.txt {
 					width: 88%;
@@ -53,7 +75,7 @@
 						border: 1px solid #aaa;
 						resize: none;
 						margin-bottom: 10px;
-						background: #f0fdff;
+						background: #bbb;
 					}
 					button {
 						width: 150px;
@@ -79,11 +101,23 @@
 						border: none;
 						background: transparent;
 						cursor: pointer;
+
 						&:nth-of-type(1) {
 							color: orange;
+							transition: 0.2s;
+							&:hover {
+								transform: scale(1.2);
+								color: #ffa60071;
+							}
 						}
 						&:nth-of-type(2) {
 							color: orangered;
+							transition: 0.2s;
+
+							&:hover {
+								transform: scale(1.2);
+								color: #ff44007d;
+							}
 						}
 					}
 				}

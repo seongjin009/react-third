@@ -1,4 +1,3 @@
-@import '/src/styles/Variable.scss';
 .Department {
 	position: relative;
 	figure {
@@ -123,85 +122,6 @@
 			bottom: -23vh;
 			left: 0;
 			font-weight: bold;
-		}
-	}
-}
-@media screen and (max-width: $tablet) {
-	.Department {
-		.subtit {
-			width: 50%;
-			font-size: 1rem;
-			float: right;
-			margin: 10px;
-		}
-		.memberBox {
-			margin: 10px;
-			margin-top: 60px;
-			width: 100%;
-			display: flex;
-			flex-wrap: wrap;
-			gap: 4.5vw;
-			justify-content: space-between;
-			position: relative;
-			top: 50vh;
-			article {
-				width: 30%;
-				h2 {
-					margin-top: 3px;
-					font-size: 1rem;
-					margin-bottom: 3px;
-				}
-				p {
-					font-size: 0.5rem;
-					margin-bottom: 3px;
-					span {
-						font-weight: bold;
-					}
-				}
-				.line3 {
-					width: 10vw;
-				}
-				&:hover {
-					.line3 {
-						width: 15vw;
-					}
-				}
-			}
-			.directior {
-				width: 100%;
-				height: 40px;
-				position: absolute;
-				bottom: -13vh;
-				left: 0;
-				font-weight: bold;
-			}
-		}
-	}
-}
-@media screen and (max-width: $mobile) {
-	.Department {
-		.subtit {
-			position: absolute;
-			top: 68vh;
-			right: 0;
-			width: 50%;
-			font-size: 1rem;
-			float: right;
-			margin: 10px;
-			.line1 {
-				border-bottom: 2px solid black;
-				margin: 30px;
-			}
-		}
-		.memberBox {
-			margin-top: -40px;
-			article {
-				width: 100%;
-				margin-bottom: 30px;
-				.pic {
-					height: 90vh;
-				}
-			}
 		}
 	}
 }
