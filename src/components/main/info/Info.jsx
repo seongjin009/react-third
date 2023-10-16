@@ -15,7 +15,6 @@ function Info() {
 				<article>9</article>
 				<article>10</article>
 				<article>11</article>
-				<article>12</article>
 			</div>
 		</section>
 	);
