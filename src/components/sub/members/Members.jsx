@@ -11,9 +11,12 @@ export default function Members() {
 	};
 	const [Errs, setErrs] = useState({});
 
-	console.log(Errs);
-
 	const [Val, setVal] = useState(initVal);
+
+	const resetForm = (e) => {
+		e.preventDefault();
+		setVal(initVal);
+	};
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -169,8 +172,8 @@ export default function Members() {
 							{/*btnSet */}
 							<tr>
 								<th colSpan='2'>
-									<input type='reset' defaultValue='cancel' />
-									<input type='submit' defaultValue='send' />
+									<input type='reset' defaultValue='cancel' onClick={resetForm} />
+									<input type='submit' defaultValue='send' onClick={resetForm} />
 								</th>
 							</tr>
 						</tbody>
