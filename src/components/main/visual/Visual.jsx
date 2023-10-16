@@ -3,7 +3,13 @@ import './Visual.scss';
 function Visual() {
 	return (
 		<section className='visual'>
-			<h2>Visual</h2>
+			<main>
+				<h1 className='title'>
+					My Portfolio
+					<span>Lorem ipsum dolor sit amet.</span>
+				</h1>
+				<img className='backimg' src='./././img/mainBack.jpeg' />
+			</main>
 		</section>
 	);
 }

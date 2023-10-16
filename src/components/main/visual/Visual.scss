@@ -1,5 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Orbitron&family=Roboto:wght@100&family=Young+Serif&display=swap');
 .visual {
 	width: 100%;
 	height: calc(100vh);
-	background: aqua;
+	main {
+		position: relative;
+		.title {
+			width: 50%;
+			position: absolute;
+			color: #fff;
+			top: 20vh;
+			left: 10vw;
+			z-index: 1;
+			font-size: 5rem;
+			span {
+				left: 0;
+				top: 15vh;
+				position: absolute;
+				font-size: 3rem;
+				font-weight: 300;
+				font-family: 'Young Serif', serif;
+			}
+		}
+		.backimg {
+			position: absolute;
+			width: 100%;
+			height: 100vh;
+			filter: brightness(70%);
+		}
+	}
 }
