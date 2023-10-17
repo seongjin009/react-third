@@ -13,11 +13,12 @@ a {
 	color: inherit;
 }
 body {
-	background: #eee;
+	background: #fff;
 }
 html {
 	&::-webkit-scrollbar {
 		width: 4px;
+		background: #fff;
 	}
 	&::-webkit-scrollbar-thumb {
 		border-radius: 10px;

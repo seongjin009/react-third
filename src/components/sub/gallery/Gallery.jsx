@@ -156,7 +156,6 @@ export default function Gallery(opt) {
 					<img src={ActiveURL} alt='img' />
 				</Modal>
 			)}
-			IsModal
 		</>
 	);
 }

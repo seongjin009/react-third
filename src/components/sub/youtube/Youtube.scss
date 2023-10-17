@@ -1,9 +1,11 @@
 .Youtube {
 	position: relative;
+	h1 {
+		width: 90vw;
+	}
+	overflow: hidden;
 
 	.content {
-		width: 99vw;
-
 		h1 {
 			text-align: center;
 		}
