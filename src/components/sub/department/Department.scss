@@ -125,6 +125,101 @@
 		}
 	}
 }
+.tablet {
+	.Department {
+		.subtit {
+			width: 50%;
+			font-size: 1rem;
+			float: right;
+			margin: 10px;
+		}
+		.memberBox {
+			margin: 10px;
+			margin-top: 60px;
+			width: 100%;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 4.5vw;
+			justify-content: space-between;
+			position: relative;
+			top: 50vh;
+
+			article {
+				width: 30%;
+				h2 {
+					margin-top: 3px;
+					font-size: 1rem;
+					margin-bottom: 3px;
+				}
+				p {
+					font-size: 0.5rem;
+					margin-bottom: 3px;
+					span {
+						font-weight: bold;
+					}
+				}
+				.line3 {
+					width: 10vw;
+				}
+				&:hover {
+					.line3 {
+						width: 15vw;
+					}
+				}
+			}
+			.directior {
+				width: 100%;
+				height: 40px;
+				position: absolute;
+				bottom: -13vh;
+				left: 0;
+				font-weight: bold;
+			}
+		}
+	}
+}
+.mobile {
+	.Department {
+		.subtit {
+			position: absolute;
+			top: 68vh;
+			right: 0;
+			width: 50%;
+			font-size: 1rem;
+			float: right;
+			margin: 10px;
+
+			.line1 {
+				border-bottom: 2px solid black;
+				margin: 30px;
+			}
+		}
+		.memberBox {
+			margin-top: -40px;
+			display: block;
+			article {
+				width: 90vw;
+				margin-bottom: 100px;
+
+				.pic {
+					width: 90vw;
+
+					height: 90vh;
+				}
+				.line3 {
+					width: 30vw;
+				}
+				&:hover {
+					transform: scale(1.05);
+					filter: grayscale(0%);
+					.line3 {
+						width: 80vw;
+					}
+				}
+			}
+		}
+	}
+}
 /*
 	flex로 UI좌우 배치하는 방법
 	1. 좌우배치할 덩어리를 부모태그로 wrapping
