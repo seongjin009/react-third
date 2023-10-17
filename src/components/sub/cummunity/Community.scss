@@ -120,11 +120,11 @@
 						background: transparent;
 						cursor: pointer;
 
-						margin-right: 10vw;
+						margin-right: 5vw;
 						transform: translateY(-1vh);
 
 						&:nth-of-type(1) {
-							width: 10vw;
+							width: 5vw;
 							font-size: 1.3rem;
 							color: #0095ff;
 							transition: 0.2s;
@@ -134,7 +134,7 @@
 							}
 						}
 						&:nth-of-type(2) {
-							width: 10vw;
+							width: 5vw;
 							font-size: 1.3rem;
 							color: #0095ff;
 							transition: 0.2s;
@@ -142,6 +142,161 @@
 							&:hover {
 								transform: scale(1.2);
 								color: #0095ff98;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.mobile {
+	.Community {
+		background: #000;
+		h1 {
+			color: #fff !important;
+		}
+
+		.content {
+			text-align: center;
+			font-size: 1rem;
+			.inputBox {
+				width: 100%;
+				padding: 50px;
+				margin-bottom: 50px;
+				text-align: center;
+
+				input[type='text'],
+				textarea {
+					width: 70%;
+					padding: 8px 10px;
+					border: none;
+					&:hover {
+						background: #ddd;
+					}
+					&::placeholder {
+						color: #000;
+						opacity: 0.5;
+					}
+					color: #000;
+					font-size: 1rem;
+					resize: none;
+
+					margin-bottom: 10px;
+					background: #bbb;
+				}
+				.btnSet {
+					button {
+						width: 150px;
+						height: 30px;
+						display: inline-block;
+						border: none;
+						background: #0095ff;
+						margin-right: 20px;
+						color: #ffff;
+						cursor: pointer;
+						border-radius: 10px;
+						transition: 0.2s;
+
+						&:hover {
+							background: #ddd;
+							color: #000;
+						}
+					}
+				}
+			}
+			.showBox {
+				width: 100%;
+				padding: 50px;
+				text-align: left;
+				article {
+					background: #ccc;
+					padding: 30px;
+					margin-bottom: 40px;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					flex-wrap: wrap;
+					transition: 0.3s;
+
+					&:hover {
+						transform: scale(1.05);
+						background-color: #eee;
+					}
+
+					.txt {
+						width: 88%;
+						h2 {
+							margin-bottom: 10px;
+						}
+						input[type='text'],
+						textarea {
+							width: 50%;
+							padding: 8px 10px;
+							border: none;
+							resize: none;
+							margin-bottom: 10px;
+							background: #bbb;
+
+							&:hover {
+								background: #ddd;
+							}
+						}
+						button {
+							width: 100px;
+							display: block;
+							border: none;
+							float: right;
+							background: #0095ff;
+							margin-bottom: 20px;
+							margin-right: 0px;
+							margin-top: -40px;
+							color: #ffff;
+							cursor: pointer;
+							transition: 0.3s;
+
+							&:hover {
+								background: #0095ff98;
+								color: #000;
+							}
+						}
+					}
+					.btnSet {
+						width: 100%;
+						display: flex;
+						gap: 20px;
+						align-items: center;
+						justify-content: flex-end;
+
+						button {
+							border: none;
+							background: transparent;
+							cursor: pointer;
+
+							margin-right: 5vw;
+							transform: translateY(-1vh);
+
+							&:nth-of-type(1) {
+								width: 5vw;
+								font-size: 1rem;
+								color: #0095ff;
+								transition: 0.2s;
+								&:hover {
+									transform: scale(1.2);
+									color: #0095ff98;
+								}
+							}
+							&:nth-of-type(2) {
+								width: 5vw;
+								font-size: 1rem;
+								color: #0095ff;
+								transition: 0.2s;
+
+								&:hover {
+									transform: scale(1.2);
+									color: #0095ff98;
+								}
 							}
 						}
 					}

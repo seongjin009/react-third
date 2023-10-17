@@ -101,11 +101,11 @@ export default function Gallery(opt) {
 				</div>
 
 				<div className='btnSet' ref={refbtnSet}>
-					<button className='on' onClick={handleClickMy}>
-						My Gallery
-					</button>
+					<button onClick={handleClickMy}>My Gallery</button>
 
-					<button onClick={handleClickInterest}>Interest Gallery</button>
+					<button className='on' onClick={handleClickInterest}>
+						Interest Gallery
+					</button>
 				</div>
 
 				<div className='picFrame'>

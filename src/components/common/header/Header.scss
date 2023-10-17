@@ -24,7 +24,8 @@
 
 		li {
 			a.active {
-				color: hotpink;
+				color: #000;
+				font-size: 1.2rem;
 			}
 		}
 	}
@@ -42,6 +43,7 @@
 	}
 }
 
+.mobile,
 .tablet {
 	.header {
 		ul {
@@ -49,17 +51,6 @@
 		}
 		.bars {
 			opacity: 1;
-		}
-	}
-}
-.mobile {
-	.header {
-		ul {
-			display: none;
-		}
-		.bars {
-			opacity: 1;
-
 			&:hover {
 				color: red;
 			}
