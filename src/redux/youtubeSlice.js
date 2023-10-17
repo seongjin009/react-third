@@ -41,6 +41,8 @@ const youtubeSlice = createSlice({
 	},
 });
 
+export default youtubeSlice.reducer;
+
 //리덕스에서 전역상태 관리에 쓰이는 용어정리
 
 /*
