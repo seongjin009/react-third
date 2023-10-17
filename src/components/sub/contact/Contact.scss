@@ -20,6 +20,8 @@
 				border-top: 1px solid black;
 				border-bottom: 1px solid black;
 				padding: 100px 20px;
+				margin-left: 20px;
+
 				.upper {
 					width: 100%;
 					display: flex;
@@ -69,6 +71,8 @@
 					resize: none;
 					outline: none;
 					transition: 0.5s;
+					margin: 0 auto;
+
 					&:focus {
 						background: lightcyan;
 					}
@@ -92,6 +96,13 @@
 					font: 1vw 'arial';
 					color: #555;
 					text-align: center;
+					margin: 0 auto;
+					&:hover {
+						background: #6893f798;
+					}
+					&:active {
+						background: #6695f3;
+					}
 				}
 			}
 		}
@@ -100,6 +111,7 @@
 			height: 35vh;
 			border-bottom: 1px solid black;
 			margin-bottom: 50px;
+			margin: 0 auto;
 			padding: 20px;
 			display: flex;
 			justify-content: space-between;
@@ -128,16 +140,21 @@
 	.btnSet {
 		width: 70vw;
 		margin: 0px auto;
+		text-align: center;
 		.traBtn,
 		.resBtn,
 		.roadBtn {
 			width: 10vw;
 			height: 5vh;
 			border: 1px solid black;
-			margin: 10px;
+			margin: 20px 10vw 0 3.2vw;
+			border-radius: 10px;
 			cursor: pointer;
 			&:hover {
-				background: #6894f7;
+				background: #6893f798;
+			}
+			&:active {
+				background: #6695f3;
 			}
 		}
 	}
@@ -158,6 +175,7 @@
 			left: 0px;
 			z-index: 1;
 			opacity: 0;
+			margin: 0 auto;
 
 			&.on {
 				display: block;
