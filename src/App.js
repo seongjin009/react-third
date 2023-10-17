@@ -11,8 +11,10 @@ import Community from './components/sub/cummunity/Community';
 import Detail from './components/sub/youtube/Detail';
 import Main from './components/main/mainWrap/Main';
 import { useRef } from 'react';
+import { useMedia } from './hooks/useMedia';
 
 function App() {
+	console.log(useMedia());
 	const refMain = useRef(null);
 
 	return (

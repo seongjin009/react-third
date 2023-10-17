@@ -136,6 +136,9 @@
 			border: 1px solid black;
 			margin: 10px;
 			cursor: pointer;
+			&:hover {
+				background: #6894f7;
+			}
 		}
 	}
 	.container {
