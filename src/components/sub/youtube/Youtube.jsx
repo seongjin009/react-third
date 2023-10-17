@@ -1,27 +1,10 @@
 import Layout from '../../common/layout/Layout';
 import { Link } from 'react-router-dom';
-
-import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import './Youtube.scss';
 
 export default function Youtube() {
-	const [Youtube, setYoutube] = useState([]);
-
-	//async await로 동기화 코드를 좀더 깔끔하게 동기화 처리
-	const fetchYoutube = async () => {
-		const api_key = process.env.REACT_APP_YOUTUBE_API;
-		const baseURL = 'https://www.googleapis.com/youtube/v3/playlistItems';
-		const pid = `PLJ0_dUpwgnHGNKFN5G2r6rsMf51JmkB7M`;
-		const num = 1;
-		const resultURL = `${baseURL}?key=${api_key}&part=snippet&playlistId=${pid}&maxResult=${num}`;
-		const data = await fetch(resultURL);
-		const json = await data.json();
-		console.log(json.items);
-		setYoutube(json.items);
-	};
-	useEffect(() => {
-		fetchYoutube();
-	}, []);
+	const Youtube = useSelector((store) => store.youtube.data);
 
 	return (
 		<>

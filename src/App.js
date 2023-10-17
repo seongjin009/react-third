@@ -10,10 +10,17 @@ import Community from './components/sub/cummunity/Community';
 
 import Detail from './components/sub/youtube/Detail';
 import Main from './components/main/mainWrap/Main';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useMedia } from './hooks/useMedia';
+import { fetchYoutube } from './redux/youtubeSlice';
+import { useDispatch } from 'react-redux';
 
 function App() {
+	const dispatch = useDispatch();
+	useEffect(() => {
+		//컴포넌트 마운트시 fetchYoutube가 반환한 action객체를 dispatch함수를 통해서 리듀서에 전달
+		dispatch(fetchYoutube());
+	}, []);
 	return (
 		<main className={useMedia(500, 800, 1600)}>
 			{/* Switch안쪽에서 중첩되는 조건 라우트의 컴포넌트가 있을때 위쪽의 조건의 컴포넌트만 호출하고 나머지 무시 */}
