@@ -1,5 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
 import './Header.scss';
+import { AiOutlineBars } from 'react-icons/ai';
 
 export default function Header({ isMain }) {
 	return (
@@ -40,6 +41,7 @@ export default function Header({ isMain }) {
 					</NavLink>
 				</li>
 			</ul>
+			<AiOutlineBars className='bars' fontSize={30} />
 		</header>
 	);
 }

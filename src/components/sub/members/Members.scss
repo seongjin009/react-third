@@ -16,13 +16,20 @@
 					text-align: center;
 					input[type='submit'],
 					input[type='reset'] {
-						border: 1px solid #aaa;
+						border: none;
+						font-weight: bold;
+						background: #0095ffc3;
+						color: #fff;
 						width: 150px;
 						height: 30px;
 						display: inline-flex;
 						justify-content: center;
-						margin: 0px 10px;
+						margin: 0px 70px;
 						cursor: pointer;
+						&:hover {
+							background: #0095ff6f;
+							color: #000;
+						}
 					}
 				}
 			}
@@ -33,11 +40,24 @@
 				padding: 15px 30px;
 
 				input[type='text'],
-				input[type='password'] {
-					width: 40%;
-					border: 1px solid #aaa;
+				input[type='password'],
+				textarea,
+				select {
+					width: 30%;
+					height: 5vh;
+					border: none;
+					border-bottom: 1px solid #bbb;
 					padding: 6px 10px;
-					bottom: #fff;
+					background: #eee;
+					transition: 0.3s;
+					&:hover {
+						width: 50%;
+					}
+				}
+				input[type='checkbox'],
+				input[type='radio'],
+				label {
+					margin-right: 20px;
 				}
 				p {
 					font: 0.8rem/1.2 '돋음';

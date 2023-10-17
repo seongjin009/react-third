@@ -3,6 +3,12 @@
 	padding: 3vh 10vw;
 	display: flex;
 	justify-content: space-between;
+	position: relative;
+	.bars {
+		position: absolute;
+		opacity: 0;
+		right: 10vw;
+	}
 
 	h1 {
 		font-size: 1.5rem;
@@ -33,5 +39,30 @@
 .header.sub {
 	h1 {
 		color: hotpink;
+	}
+}
+
+.tablet {
+	.header {
+		ul {
+			display: none;
+		}
+		.bars {
+			opacity: 1;
+		}
+	}
+}
+.mobile {
+	.header {
+		ul {
+			display: none;
+		}
+		.bars {
+			opacity: 1;
+
+			&:hover {
+				color: red;
+			}
+		}
 	}
 }

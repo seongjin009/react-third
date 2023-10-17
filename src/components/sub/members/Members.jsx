@@ -116,7 +116,7 @@ export default function Members() {
 							{/* userid */}
 							<tr>
 								<th scope='row'>
-									<label htmlFor='userid'>userid</label>
+									<label htmlFor='userid'>Userid</label>
 								</th>
 								<td>
 									<input
@@ -125,6 +125,7 @@ export default function Members() {
 										name='userid'
 										value={Val.userid}
 										onChange={handleChange}
+										placeholder='아이디'
 									/>
 									{Errs.userid && <p>{Errs.userid}</p>}
 								</td>
@@ -132,7 +133,7 @@ export default function Members() {
 							{/* password */}
 							<tr>
 								<th scope='row'>
-									<label htmlFor='pwd1'>password</label>
+									<label htmlFor='pwd1'>Password</label>
 								</th>
 								<td>
 									<input
@@ -141,6 +142,7 @@ export default function Members() {
 										name='pwd1'
 										value={Val.pwd1}
 										onChange={handleChange}
+										placeholder='비밀번호'
 									/>
 									{Errs.pwd1 && <p>{Errs.pwd1}</p>}
 								</td>
@@ -148,7 +150,7 @@ export default function Members() {
 							{/* re password */}
 							<tr>
 								<th scope='row'>
-									<label htmlFor='pwd2'>re-password</label>
+									<label htmlFor='pwd2'>Re-Password</label>
 								</th>
 								<td>
 									<input
@@ -157,6 +159,7 @@ export default function Members() {
 										name='pwd2'
 										value={Val.pwd2}
 										onChange={handleChange}
+										placeholder='비밀번호 재확인'
 									/>
 									{Errs.pwd2 && <p>{Errs.pwd2}</p>}
 								</td>
@@ -164,7 +167,7 @@ export default function Members() {
 							{/* email */}
 							<tr>
 								<th scope='row'>
-									<label htmlFor='email'>e-mail</label>
+									<label htmlFor='email'>E-mail</label>
 								</th>
 								<td>
 									<input
@@ -173,30 +176,31 @@ export default function Members() {
 										name='email'
 										value={Val.email}
 										onChange={handleChange}
+										placeholder='이메일'
 									/>
 									{Errs.email && <p>{Errs.email}</p>}
 								</td>
 							</tr>
 							{/* gender */}
 							<tr>
-								<th>gender</th>
+								<th>Gender</th>
 								<td ref={refRadioGroup}>
-									<label htmlFor='female'>female</label>
+									<label htmlFor='female'>Female</label>
 									<input type='radio' name='gender' id='female' onChange={handleRadio} />
-									<label htmlFor='male'>male</label>
+									<label htmlFor='male'>Male</label>
 									<input type='radio' name='gender' id='male' onChange={handleRadio} />
 									{Errs.gender && <p>{Errs.gender}</p>}
 								</td>
 							</tr>
 							{/* interests */}
 							<tr>
-								<th>interests</th>
+								<th>Interests</th>
 								<td ref={refCheckGroup}>
-									<label htmlFor='sports'>sports</label>
+									<label htmlFor='sports'>Sports</label>
 									<input type='checkbox' id='sports' name='interests' onChange={handleCheck} />
-									<label htmlFor='game'>game</label>
+									<label htmlFor='game'>Game</label>
 									<input type='checkbox' id='game' name='interests' onChange={handleCheck} />
-									<label htmlFor='music'>music</label>
+									<label htmlFor='music'>Music</label>
 									<input type='checkbox' id='music' name='interests' onChange={handleCheck} />
 									{Errs.interests && <p>{Errs.interests}</p>}
 								</td>
@@ -208,7 +212,7 @@ export default function Members() {
 								</th>
 								<td>
 									<select name='edu' id='edu' onChange={handleChange} ref={refschool}>
-										<option value=''>최종학력 선택하세요</option>
+										<option value=''>최종학력</option>
 										<option value='elementary-school'>초등학교 졸업</option>
 										<option value='middle-school'>중학교 졸업</option>
 										<option value='high-school'>고등학교 졸업</option>
@@ -220,7 +224,7 @@ export default function Members() {
 							{/* comments */}
 							<tr>
 								<th>
-									<label htmlFor='comments'>comments</label>
+									<label htmlFor='comments'>Comments</label>
 								</th>
 								<td>
 									<textarea
@@ -230,6 +234,7 @@ export default function Members() {
 										rows='3'
 										value={Val.comments}
 										onChange={handleChange}
+										placeholder='남기실 말'
 									></textarea>
 									{Errs.comments && <p>{Errs.comments}</p>}
 								</td>
