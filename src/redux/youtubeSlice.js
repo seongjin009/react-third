@@ -7,7 +7,7 @@ export const fetchYoutube = createAsyncThunk('youtube/request', async () => {
 	const api_key = process.env.REACT_APP_YOUTUBE_API;
 	const baseURL = 'https://www.googleapis.com/youtube/v3/playlistItems';
 	const pid = `PLJ0_dUpwgnHGNKFN5G2r6rsMf51JmkB7M`;
-	const num = 1;
+	const num = 10;
 	const resultURL = `${baseURL}?key=${api_key}&part=snippet&playlistId=${pid}&maxResult=${num}`;
 	const result = await axios.get(resultURL);
 	return result.data.items;
