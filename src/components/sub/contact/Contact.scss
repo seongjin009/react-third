@@ -44,6 +44,7 @@
 							padding: 10px 20px;
 							margin-right: 50px;
 							outline: none;
+							background: #eee;
 							transition: 0.5s;
 
 							&:focus {
@@ -73,6 +74,8 @@
 					outline: none;
 					transition: 0.5s;
 					margin: 0 auto;
+
+					background: #eee;
 
 					&:focus {
 						background: lightcyan;
