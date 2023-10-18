@@ -14,12 +14,14 @@ import { useEffect, useRef } from 'react';
 import { useMedia } from './hooks/useMedia';
 import { fetchYoutube } from './redux/youtubeSlice';
 import { useDispatch } from 'react-redux';
+import { fetchFlickr } from './redux/flickrslice';
 
 function App() {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		//컴포넌트 마운트시 fetchYoutube가 반환한 action객체를 dispatch함수를 통해서 리듀서에 전달
 		dispatch(fetchYoutube());
+		dispatch(fetchFlickr({ type: 'user', id: '199282986@N03' }));
 	}, []);
 	return (
 		<main className={useMedia(500, 800, 1600)}>

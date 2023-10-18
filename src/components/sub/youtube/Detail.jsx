@@ -1,6 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Layout from '../../common/layout/Layout';
+import { Link, NavLink } from 'react-router-dom';
+
 import './Detail.scss';
 
 export default function Detail() {
@@ -43,6 +45,13 @@ export default function Detail() {
 						title='youtube'
 					></iframe>
 				</div>
+			</div>
+			<div className='btmBox'>
+				<p>
+					<NavLink to='/Youtube' activeClassName='active'>
+						close
+					</NavLink>
+				</p>
 			</div>
 		</Layout>
 	);

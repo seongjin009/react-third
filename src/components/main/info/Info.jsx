@@ -1,13 +1,25 @@
 import './Info.scss';
+import { useSelector } from 'react-redux';
 
 function Info() {
+	const { data } = useSelector((store) => store.flickr);
+
 	return (
 		<section className='info'>
 			<div className='wrap'>
-				<article>1</article>
-				<article>2</article>
-				<article>3</article>
-				<article>4</article>
+				{data.map((pic, idx) => {
+					if (idx >= 4) return null;
+					return (
+						<article key={idx}>
+							<div className='pic'>
+								<img
+									src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_b.jpg`}
+									alt={pic.title}
+								/>
+							</div>
+						</article>
+					);
+				})}
 			</div>
 		</section>
 	);
