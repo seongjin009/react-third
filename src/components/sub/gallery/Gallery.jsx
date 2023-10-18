@@ -65,7 +65,7 @@ export default function Gallery() {
 			<Layout title={'Gallery'}>
 				<div className='searchBox'>
 					<form onSubmit={handleSubmit}>
-						<input ref={refBtnSet} type='text' placeholder='검색어를 입력하세요' />
+						<input ref={refInput} type='text' placeholder='검색어를 입력하세요' />
 						<button>검색</button>
 					</form>
 				</div>
