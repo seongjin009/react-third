@@ -7,7 +7,7 @@ function Visual() {
 		<section className='visual'>
 			<h2>Visual</h2>
 			{data.map((vid, idx) => {
-				if (idx >= 8) return null;
+				if (idx >= 1) return null;
 				return (
 					<article key={idx}>
 						<h2>{vid.snippet.title}</h2>

@@ -21,3 +21,33 @@
 		}
 	}
 }
+
+.tablet {
+	.news {
+		.postWrap {
+			article {
+				h2 {
+					font: bold 30px/1 'arial';
+				}
+				p {
+					font: 20px/1 'arial';
+				}
+			}
+		}
+	}
+}
+
+.mobile {
+	.news {
+		.postWrap {
+			article {
+				h2 {
+					font: bold 20px/1 'arial';
+				}
+				p {
+					font: bold 10px/1 'arial';
+				}
+			}
+		}
+	}
+}

@@ -25,18 +25,20 @@ export default function Youtube() {
 					return (
 						<article key={idx}>
 							<div className='txtBox'>
-								<div className='titBox'>
-									<div className='line1'></div>
-									<h2>{tit.length > 10 ? tit.substr(0, 15) + '...' : tit}</h2>
-								</div>
-								<div className='conBox'>
-									<p>{desc.length > 10 ? tit.substr(0, 60) + '...' : desc}</p>
-									<div className='line1'></div>
-								</div>
+								<Link to={`/detail/${data.id}`}>
+									<div className='titBox'>
+										<div className='line1'></div>
+										<h2>{tit.length > 10 ? tit.substr(0, 15) + '...' : tit}</h2>
+									</div>
+									<div className='conBox'>
+										<p>{desc.length > 10 ? tit.substr(0, 60) + '...' : desc}</p>
+										<div className='line1'></div>
+									</div>
 
-								<div className='dateBox'>
-									<span>{date.split('T')[0].split('-').join('.')}</span>
-								</div>
+									<div className='dateBox'>
+										<span>{date.split('T')[0].split('-').join('.')}</span>
+									</div>
+								</Link>
 							</div>
 							<div className='picBox'>
 								<Link to={`/detail/${data.id}`}>
