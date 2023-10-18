@@ -3,11 +3,18 @@ import './Community.scss';
 import { useRef, useState, useEffect } from 'react';
 
 export default function Community() {
+	const dyndata1 = [
+		{
+			title: 'jeonghyn',
+			content: "hello jeonghyun i'm seongjin",
+			data: new Date(),
+		},
+	];
 	//로컬데이터의 값을 parsing해서
 	const getLocalDate = () => {
 		const data = localStorage.getItem('post');
 		if (data) return JSON.parse(data);
-		else return [];
+		else return dyndata1;
 	};
 	const refInput = useRef(null);
 	const refTextarea = useRef(null);
