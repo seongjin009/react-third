@@ -1,16 +1,13 @@
+import './Menu.scss';
 import { Link, NavLink } from 'react-router-dom';
-import './Header.scss';
-import { FaBars } from 'react-icons/fa';
-import { toggle } from '../../../redux/menuSlice';
-import { useDispatch } from 'react-redux';
 
-export default function Header({ isMain }) {
-	const dispatch = useDispatch();
+function Menu() {
 	return (
-		<header className='header'>
+		<aside className='menu'>
 			<h1>
 				<Link to='/'>LOGO</Link>
 			</h1>
+
 			<ul>
 				<li>
 					<NavLink to='/department' activeClassName='active'>
@@ -43,8 +40,8 @@ export default function Header({ isMain }) {
 					</NavLink>
 				</li>
 			</ul>
-
-			<FaBars className='bars' fontSize={22} color={'#333'} onClick={() => dispatch(toggle())} />
-		</header>
+		</aside>
 	);
 }
+
+export default Menu;

@@ -5,6 +5,8 @@ import { useState, useRef } from 'react';
 import Masonry from 'react-masonry-component';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchFlickr } from '../../../redux/flickrslice';
+import { open } from '../../../redux/modalSlick';
+
 export default function Gallery() {
 	const dispatch = useDispatch();
 	const Pics = useSelector((store) => store.flickr.data);
@@ -12,8 +14,9 @@ export default function Gallery() {
 	const refBtnSet = useRef(null);
 	const [ActiveURL, setActiveURL] = useState('');
 	const [IsUser, setIsUser] = useState(true);
-	const [IsModal, setIsModal] = useState(false);
+	const IsModal = useSelector((store) => store.modal.isOpen);
 	const my_id = '199282986@N03';
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setIsUser(false);
@@ -62,12 +65,12 @@ export default function Gallery() {
 			<Layout title={'Gallery'}>
 				<div className='searchBox'>
 					<form onSubmit={handleSubmit}>
-						<input ref={refInput} type='text' placeholder='검색어를 입력하세요' />
+						<input ref={refBtnSet} type='text' placeholder='검색어를 입력하세요' />
 						<button>검색</button>
 					</form>
 				</div>
 
-				<div className='btnSet' ref={refInput}>
+				<div className='btnSet' ref={refBtnSet}>
 					<button onClick={handleClickMy}>My Gallery</button>
 
 					<button className='on' onClick={handleClickInterest}>
@@ -92,7 +95,7 @@ export default function Gallery() {
 											alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
 											onClick={(e) => {
 												setActiveURL(e.target.getAttribute('alt'));
-												setIsModal(true);
+												dispatch(open());
 											}}
 										/>
 										<h2>{data.title}</h2>
@@ -119,7 +122,7 @@ export default function Gallery() {
 				</div>
 			</Layout>
 			{IsModal && (
-				<Modal setIsModal={setIsModal}>
+				<Modal>
 					<img src={ActiveURL} alt='img' />
 				</Modal>
 			)}

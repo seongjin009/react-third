@@ -28,10 +28,10 @@ export default function Youtube() {
 								<Link to={`/detail/${data.id}`}>
 									<div className='titBox'>
 										<div className='line1'></div>
-										<h2>{tit.length > 10 ? tit.substr(0, 15) + '...' : tit}</h2>
+										<h2>{tit.length > 10 ? tit.substr(0, 5) + '...' : tit}</h2>
 									</div>
 									<div className='conBox'>
-										<p>{desc.length > 10 ? tit.substr(0, 60) + '...' : desc}</p>
+										<p>{desc.length > 10 ? tit.substr(0, 6) + '...' : desc}</p>
 										<div className='line1'></div>
 									</div>
 

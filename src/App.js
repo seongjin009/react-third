@@ -13,11 +13,13 @@ import Main from './components/main/mainWrap/Main';
 import { useEffect, useRef } from 'react';
 import { useMedia } from './hooks/useMedia';
 import { fetchYoutube } from './redux/youtubeSlice';
-import { useDispatch } from 'react-redux';
 import { fetchFlickr } from './redux/flickrslice';
+import { useDispatch, useSelector } from 'react-redux';
+import Menu from './components/common/menu/Menu';
 
 function App() {
 	const dispatch = useDispatch();
+	const { isOpen } = useSelector((store) => store.menu);
 	useEffect(() => {
 		//컴포넌트 마운트시 fetchYoutube가 반환한 action객체를 dispatch함수를 통해서 리듀서에 전달
 		dispatch(fetchYoutube());
@@ -45,6 +47,7 @@ function App() {
 			<Route path='/members' component={Members} />
 			<Route path='/contact' component={Contact} />
 			<Route path='/community' component={Community} />
+			{isOpen && <Menu />}
 			{/* params는 url에 특정 컴포넌트를 연결할 때 url로 정보값을 같이 전달 경로/:변수명 */}
 		</main>
 	);
