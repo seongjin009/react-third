@@ -107,52 +107,26 @@
 				}
 			}
 		}
+
 		.swiper-slide-prev {
 			.pic {
 				transform: scale(1.5);
 				opacity: 0;
 			}
 		}
+
 		.swiper-slide-active {
 			.pic {
 				transform: scale(1);
 				opacity: 1;
 			}
 		}
+
 		.swiper-slide-next {
 			.pic {
 				transform: scale(0.7);
 				opacity: 0.7;
 			}
-		}
-	}
-}
-
-.tablet,
-.mobile {
-	.visual {
-		.titBox {
-			display: none;
-			width: 70vw;
-			position: absolute;
-			top: 0;
-			left: 0;
-			z-index: 3;
-
-			ul li {
-				padding: 50px;
-				h3 {
-					font-size: 2rem;
-				}
-				p {
-					display: none;
-				}
-			}
-		}
-
-		.swiper {
-			width: 100%;
-			padding: 10vw 15vw;
 		}
 	}
 }
