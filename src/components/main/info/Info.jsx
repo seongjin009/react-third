@@ -5,8 +5,8 @@ function Info() {
 	const { data } = useSelector((store) => store.flickr);
 
 	return (
-		<section className='info'>
-			<div className='wrap'>
+		<section className='info myScroll'>
+			<div className='wrap '>
 				{data.map((pic, idx) => {
 					if (idx >= 4) return null;
 					return (

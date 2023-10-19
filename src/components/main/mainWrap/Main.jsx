@@ -1,3 +1,4 @@
+import Btns from '../btns/Btns';
 import Info from '../info/Info';
 import News from '../news/News';
 import Visual from '../visual/Visual';
@@ -9,6 +10,7 @@ function Main() {
 			<Visual />
 			<News />
 			<Info />
+			<Btns />
 		</main>
 	);
 }
