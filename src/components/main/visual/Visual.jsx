@@ -8,7 +8,7 @@ function Visual() {
 
 	return (
 		<section className='visual'>
-			<Swiper slidesPerView={3} loop={true} centeredSlides={true}>
+			<Swiper slidesPerView={3} spaceBetween={50} loop={true} centeredSlides={true}>
 				{data.map((vid, idx) => {
 					if (idx >= 10) return null;
 					return (
