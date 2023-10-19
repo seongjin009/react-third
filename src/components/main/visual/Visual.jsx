@@ -9,7 +9,7 @@ function Visual() {
 	const [Index, setIndex] = useState(0);
 
 	return (
-		<section className='visual myScroll'>
+		<section className='visual'>
 			<div className='titBox'>
 				<ul>
 					{data.map((tit, idx) => {

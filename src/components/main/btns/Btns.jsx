@@ -1,6 +1,7 @@
 import Anime from '../../../asset/anime';
 import './Btns.scss';
 import { useRef, useEffect, useState } from 'react';
+
 function Btns() {
 	//ul요소를 담을 참조객체 생성
 	const refBtns = useRef(null);
@@ -15,6 +16,7 @@ function Btns() {
 		for (let sec of secs) pos.current.push(sec.offsetTop);
 		setNum(pos.current.length);
 	};
+
 	//브라우저 스크롤시 버튼을 반복돌면서 스크롤이 특정 섹션영역을 넘어가면 해당 순번의 버튼 활성화 함수
 	const activation = () => {
 		const btns = refBtns.current.querySelectorAll('li');
@@ -26,17 +28,16 @@ function Btns() {
 			}
 		});
 	};
-
 	useEffect(() => {
 		getPos();
 		window.addEventListener('resize', getPos);
 		window.addEventListener('scroll', activation);
-
 		return () => {
 			window.removeEventListener('resize', getPos);
 			window.removeEventListener('scroll', activation);
 		};
 	}, []);
+
 	return (
 		<ul className='scroll_navi' ref={refBtns}>
 			{Array(Num)

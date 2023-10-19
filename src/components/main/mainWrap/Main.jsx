@@ -1,6 +1,7 @@
 import Btns from '../btns/Btns';
 import Info from '../info/Info';
 import News from '../news/News';
+import Pics from '../pics/Pics';
 import Visual from '../visual/Visual';
 import './Main.scss';
 
@@ -11,6 +12,7 @@ function Main() {
 			<News />
 			<Info />
 			<Btns />
+			<Pics />
 		</main>
 	);
 }
