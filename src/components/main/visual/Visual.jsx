@@ -17,6 +17,8 @@ function Visual() {
 						return (
 							<li key={idx} className={idx === Index ? 'on' : ''}>
 								{tit.snippet.title}
+								<br></br>
+								<button>VIEW</button>
 							</li>
 						);
 					})}
@@ -25,7 +27,7 @@ function Visual() {
 
 			<Swiper
 				slidesPerView={3}
-				spaceBetween={50}
+				spaceBetween={100}
 				loop={true}
 				centeredSlides={true}
 				//swiper loop기능을 적용하는 순간 실제 연결되어있는 패널갯수보다 동적으로 패널이 생성되면서 일반적인 방법으로는 활성화패널의 순서값을 구할 수 없기 때믄에 아래와 같은 방법으로 순서값을 구함
