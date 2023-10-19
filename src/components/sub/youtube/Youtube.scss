@@ -56,8 +56,8 @@
 					position: relative;
 					bottom: 0;
 					.titBox {
-						width: 100%;
-						height: 40%;
+						width: 40%;
+						bottom: 0;
 						border: 1px solid red;
 						position: absolute;
 						display: flex;
@@ -66,12 +66,14 @@
 					}
 					.conBox {
 						display: flex;
-						justify-content: center;
-						align-items: center;
 						position: absolute;
-						top: 40%;
-						width: 100%;
-						height: 40%;
+						justify-content: center;
+						top: 60%;
+						left: 40%;
+
+						align-items: center;
+
+						width: 40%;
 						border: 1px solid red;
 
 						p {
@@ -79,12 +81,12 @@
 					}
 					.dateBox {
 						display: flex;
+						bottom: 0;
+
 						justify-content: center;
 						align-items: center;
 						position: absolute;
-						top: 80%;
-						width: 100%;
-						height: 20%;
+						width: 20%;
 						border: 1px solid red;
 					}
 				}
@@ -100,64 +102,76 @@
 				}
 			}
 			.txtBox {
+				width: 100vw;
+				height: 100%;
 				position: relative;
-				width: 55vw;
 				bottom: 0;
 				.titBox {
+					width: 100%;
+					height: 40%;
+					border: 1px solid red;
 					position: absolute;
-
-					.line1 {
-					}
-					h2 {
-					}
+					display: flex;
+					justify-content: center;
+					align-items: center;
 				}
 				.conBox {
+					display: flex;
+					justify-content: center;
+					align-items: center;
 					position: absolute;
+					top: 40%;
+					width: 100%;
+					height: 40%;
+					border: 1px solid red;
 
 					p {
 					}
-
-					.line1 {
-					}
 				}
-
 				.dateBox {
+					display: flex;
+					justify-content: center;
+					align-items: center;
 					position: absolute;
+					top: 80%;
+					width: 100%;
+					height: 20%;
+					border: 1px solid red;
 				}
 			}
+		}
 
-			.picBox {
+		.picBox {
+			width: 100%;
+			height: 40vh;
+			overflow: hidden;
+			position: absolute;
+			z-index: -1;
+			transition: 0.2s;
+
+			right: 0;
+
+			img {
 				width: 100%;
-				height: 40vh;
-				overflow: hidden;
-				position: absolute;
-				z-index: -1;
-				transition: 0.2s;
-
-				right: 0;
-
-				img {
-					width: 100%;
-					height: 100%;
-					object-fit: cover;
-					transform: scale(1.5);
-				}
+				height: 100%;
+				object-fit: cover;
+				transform: scale(1.5);
 			}
-			.picBox1 {
-				width: 100%;
-				height: 40vh;
-				overflow: hidden;
-				position: absolute;
-				z-index: -1;
-				right: 0;
-				transition: 0.2s;
+		}
+		.picBox1 {
+			width: 100%;
+			height: 40vh;
+			overflow: hidden;
+			position: absolute;
+			z-index: -1;
+			right: 0;
+			transition: 0.2s;
 
-				img {
-					width: 100%;
-					height: 100%;
-					object-fit: cover;
-					transform: scale(1.5);
-				}
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				transform: scale(1.5);
 			}
 		}
 	}

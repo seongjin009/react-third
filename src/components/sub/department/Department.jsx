@@ -21,7 +21,6 @@ export default function Department() {
 
 	return (
 		<Layout title={'Department'}>
-			<div className='line'></div>
 			<div className='subPic'>
 				<div className='Picover'></div>
 				<img src='https://i.pinimg.com/564x/b5/f5/ac/b5f5aca4c3958e2b8a3424ed11bb2dff.jpg' />

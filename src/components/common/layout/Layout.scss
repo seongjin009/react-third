@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
 
 .layout {
-	width: 100%;
+	width: 95vw;
+	margin: 100px auto;
 	position: relative;
 
 	figure {
@@ -12,24 +13,16 @@
 		transition: 1s 0s;
 	}
 
-	.content {
-		width: 90vw;
-		margin: 5vh auto;
-		min-height: 60vh;
-		opacity: 1;
-		transition: transform 1s 0.5s, opacity 1s 0.5s;
+	h1 {
+		font: normal 100px/1 'Nanum Myeongjo';
+		color: #333;
+		margin-bottom: 30px;
 
-		h1 {
-			font: normal 100px/1 'Nanum Myeongjo';
-			color: #333;
-			margin-bottom: 30px;
-
-			span {
-				display: inline-block;
-				opacity: 1;
-				transform: scale(3);
-				transition-duration: 0.5s;
-			}
+		span {
+			display: inline-block;
+			opacity: 1;
+			transform: scale(3);
+			transition-duration: 0.5s;
 		}
 	}
 }
@@ -37,19 +30,15 @@
 .tablet,
 .laptop {
 	.layout {
-		.content {
-			h1 {
-				font-size: 80px;
-			}
+		h1 {
+			font-size: 80px;
 		}
 	}
 }
 .mobile {
 	.layout {
-		.content {
-			h1 {
-				font-size: 60px;
-			}
+		h1 {
+			font-size: 60px;
 		}
 	}
 }

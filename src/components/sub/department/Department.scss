@@ -63,14 +63,14 @@
 		}
 	}
 	.memberBox {
-		margin: 10px;
-		margin-top: 15vh;
 		width: 90%;
 		display: flex;
 		gap: 10px;
 		position: absolute;
 		top: 110vh;
-
+		margin: 15vh auto;
+		left: 50%;
+		transform: translateX(-50%);
 		article {
 			width: 30%;
 			filter: grayscale(80%);
