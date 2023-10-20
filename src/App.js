@@ -12,7 +12,6 @@ import Community from './components/sub/cummunity/Community';
 import Main from './components/main/mainWrap/Main';
 import { useMedia } from './hooks/useMedia';
 import { useEffect } from 'react';
-import { fetchYoutube } from './redux/youtubeSlice';
 import { fetchFlickr } from './redux/flickrslice';
 import { useDispatch } from 'react-redux';
 import Menu from './components/common/menu/Menu';
@@ -25,7 +24,6 @@ function App() {
 	const queryClient = new QueryClient();
 
 	useEffect(() => {
-		dispatch(fetchYoutube());
 		dispatch(fetchFlickr({ type: 'user', id: '164021883@N04' }));
 	}, []);
 

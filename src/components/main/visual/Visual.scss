@@ -85,6 +85,10 @@
 		.swiper-slide {
 			width: 100%;
 			height: 100%;
+			h2 {
+				margin-top: 20vh;
+				transition: opacity 0.5s, transform 0.5s;
+			}
 			.pic {
 				width: 20vw;
 				height: 20vh;
@@ -92,6 +96,7 @@
 				transform: scale(0.5);
 				transition: opacity 0.5s, transform 0.5s;
 				position: relative;
+
 				img {
 					width: 100%;
 					height: 100%;
@@ -109,6 +114,10 @@
 		}
 
 		.swiper-slide-prev {
+			h2 {
+				opacity: 0;
+				margin-top: 5vh;
+			}
 			.pic {
 				transform: scale(2);
 				opacity: 0;
@@ -123,6 +132,10 @@
 		}
 
 		.swiper-slide-next {
+			h2 {
+				margin-top: 5vh;
+				opacity: 0.7;
+			}
 			.pic {
 				transform: scale(0.7);
 				opacity: 0.7;
@@ -134,10 +147,12 @@
 .mobile {
 	.visual {
 		.titBox {
-			width: 60%;
+			width: 30%;
 			height: 10vh;
 			position: absolute;
 			bottom: 5vh;
+			transform: translateX(0vw);
+			right: 11vw;
 			ul {
 				li {
 					font-size: 1rem;
@@ -161,7 +176,7 @@
 				h2 {
 					display: block;
 					width: 80vw;
-					margin: 0px auto;
+					margin: 15vh auto;
 					font-size: 1.5rem;
 				}
 			}
@@ -178,6 +193,15 @@
 				transform: scale(0.7);
 				opacity: 1;
 			}
+		}
+	}
+}
+
+.mobile {
+	.visual {
+		.titBox {
+			right: 11vw;
+			bottom: 12vh;
 		}
 	}
 }

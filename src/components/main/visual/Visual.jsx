@@ -1,49 +1,80 @@
 import './Visual.scss';
-import { useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
 import { useState } from 'react';
+import 'swiper/css';
+import { Link } from 'react-router-dom';
+import { useYoutubeQuery } from '../../../hooks/useYoutube';
 
 function Visual() {
-	const { data } = useSelector((store) => store.youtube);
 	const [Index, setIndex] = useState(0);
+	const { data, isSuccess } = useYoutubeQuery();
+
+	/*
+		data: react-query가 반환데이터
+		isError: 데이터 응답 실패시 true,
+		isSucess: 데이터 응답 성공시 true,
+		isLoading: 데이터 요청 pending상태일때 true
+		isRefetching: true 동일한데이터라도 다시 refecthing 처리유무 (기본값 false)
+	*/
 
 	return (
 		<section className='visual'>
 			<div className='titBox'>
 				<ul>
-					{data.map((tit, idx) => {
-						if (idx >= 5) return null;
-						return (
-							<li key={idx} className={idx === Index ? 'on' : ''}>
-								{tit.snippet.title}
-								<br></br>
-								<button>VIEW</button>
-							</li>
-						);
-					})}
+					{isSuccess &&
+						data.map((tit, idx) => {
+							if (idx >= 7) return null;
+							return (
+								<li key={idx} className={idx === Index ? 'on' : ''}>
+									<h3>
+										{tit.snippet.title.length > 10
+											? tit.snippet.title.substr(0, 15) + '...'
+											: tit.snippet.title}
+									</h3>
+									<p>{tit.snippet.description.substr(0, 30) + '...'}</p>
+									<button>
+										<Link to={`/detail/${tit.id}`}>View Deatil</Link>
+									</button>
+								</li>
+							);
+						})}
 				</ul>
 			</div>
-
 			<Swiper
-				slidesPerView={3}
+				slidesPerView={1}
 				spaceBetween={50}
 				loop={true}
 				centeredSlides={true}
-				//swiper loop기능을 적용하는 순간 실제 연결되어있는 패널갯수보다 동적으로 패널이 생성되면서 일반적인 방법으로는 활성화패널의 순서값을 구할 수 없기 때믄에 아래와 같은 방법으로 순서값을 구함
 				onSlideChange={(el) => setIndex(el.realIndex)}
+				breakpoints={{
+					//1000px보다 브라우저폭이 커졌을때
+					1000: {
+						slidesPerView: 2,
+						spaceBetween: 50,
+					},
+					1400: {
+						slidesPerView: 3,
+						spaceBetween: 50,
+					},
+				}}
 			>
-				{data.map((vid, idx) => {
-					if (idx >= 10) return null;
-					return (
-						<SwiperSlide key={idx} className={idx === Index ? 'on' : ''}>
-							<div className='pic'>
-								<img src={vid.snippet.thumbnails.standard.url} alt={vid.title} />
-								<img src={vid.snippet.thumbnails.standard.url} alt={vid.title} />
-							</div>
-						</SwiperSlide>
-					);
-				})}
+				{isSuccess &&
+					data.map((vid, idx) => {
+						if (idx >= 5) return null;
+						return (
+							<SwiperSlide key={idx}>
+								<div className='pic'>
+									<img src={vid.snippet.thumbnails.maxres.url} alt={vid.title} />
+									<img src={vid.snippet.thumbnails.maxres.url} alt={vid.title} />
+								</div>
+								<h2>
+									{vid.snippet.title.length > 10
+										? vid.snippet.title.substr(0, 7) + '...'
+										: vid.snippet.title}
+								</h2>
+							</SwiperSlide>
+						);
+					})}
 			</Swiper>
 		</section>
 	);
