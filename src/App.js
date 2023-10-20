@@ -11,21 +11,14 @@ import Community from './components/sub/cummunity/Community';
 
 import Main from './components/main/mainWrap/Main';
 import { useMedia } from './hooks/useMedia';
-import { useEffect } from 'react';
-import { fetchFlickr } from './redux/flickrslice';
-import { useDispatch } from 'react-redux';
+
 import Menu from './components/common/menu/Menu';
 import Footer from './components/common/footer/Footer';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 function App() {
-	const dispatch = useDispatch();
 	const queryClient = new QueryClient();
-
-	useEffect(() => {
-		dispatch(fetchFlickr({ type: 'user', id: '164021883@N04' }));
-	}, []);
 
 	return (
 		<QueryClientProvider client={queryClient}>
