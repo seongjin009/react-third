@@ -7,4 +7,12 @@
 	background: #111;
 	color: #fff;
 	z-index: 5;
+	li {
+		margin-top: 3vh;
+		text-align: center;
+		&:hover {
+			transform: scale(1.1);
+			font-weight: bold;
+		}
+	}
 }

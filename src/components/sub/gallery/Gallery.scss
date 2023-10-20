@@ -51,14 +51,16 @@
 	.btnSet {
 		padding: 5vw;
 		margin-top: -8vw;
-		border-radius: 10px;
-
 		width: 90vw;
 		button {
 			width: 25vw;
 			height: 10vh;
+			border-radius: 10px;
 			border: none;
 			background: #ccc;
+
+			margin-right: 10px;
+
 			&.on {
 				background: #28bbffe3;
 				color: #fff;
@@ -128,77 +130,44 @@
 		}
 	}
 }
-.laptop {
-	.Gallery {
-		.picFrame {
-			article {
-				width: 32%;
-			}
-		}
-	}
-}
 
 .tablet {
 	.Gallery {
 		.searchBox {
 			input[type='text'] {
-				width: 70vw;
+				width: 40vw;
 				height: 5vh;
 				border: none;
 				font-size: 1rem;
-
-				&:hover {
-					background: #ddd;
-				}
-				&:active {
-					background: #fff;
-				}
-			}
-			button {
-				width: 20vw;
-				height: 5vh;
-				border: none;
-				background: #ccc;
-				&:hover {
-					background-color: #bbb;
-				}
 			}
 		}
 		.btnSet {
-			width: 90vw;
+			width: 75vw;
 			button {
-				width: 45vw;
+				width: 30vw;
 				height: 10vh;
 				border: none;
-				background: #fff;
-				&.on {
-					background: #777;
-					color: #fff;
-				}
-			}
-		}
-		.picFrame {
-			article {
-				width: 48%;
 			}
 		}
 	}
+	.picFrame {
+		article {
+			width: 48%;
+		}
+	}
 }
+
 .mobile {
 	.Gallery {
+		.ColBox {
+			display: none;
+		}
 		.searchBox {
 			input[type='text'] {
-				width: 70vw;
+				width: 60vw;
 				height: 5vh;
 				border: none;
 				font-size: 1rem;
-
-				&:hover {
-					background: #ddd;
-				}
-				&:active {
-					background: #fff;
-				}
 			}
 			button {
 				width: 20vw;
@@ -211,16 +180,9 @@
 			}
 		}
 		.btnSet {
-			width: 90vw;
+			width: 100%;
 			button {
-				width: 45vw;
-				height: 10vh;
-				border: none;
-				background: #fff;
-				&.on {
-					background: #777;
-					color: #fff;
-				}
+				width: 40vw;
 			}
 		}
 		.picFrame {

@@ -6,50 +6,53 @@ import Youtube from './components/sub/youtube/Youtube';
 import Members from './components/sub/members/Members';
 import Gallery from './components/sub/gallery/Gallery';
 import Contact from './components/sub/contact/Contact';
+import Detail from './components/sub/youtube/Detail';
 import Community from './components/sub/cummunity/Community';
 
-import Detail from './components/sub/youtube/Detail';
 import Main from './components/main/mainWrap/Main';
-import { useEffect, useRef } from 'react';
 import { useMedia } from './hooks/useMedia';
+import { useEffect } from 'react';
 import { fetchYoutube } from './redux/youtubeSlice';
 import { fetchFlickr } from './redux/flickrslice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Menu from './components/common/menu/Menu';
+import Footer from './components/common/footer/Footer';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 function App() {
 	const dispatch = useDispatch();
-	useEffect(() => {
-		//컴포넌트 마운트시 fetchYoutube가 반환한 action객체를 dispatch함수를 통해서 리듀서에 전달
-		dispatch(fetchYoutube());
-		dispatch(fetchFlickr({ type: 'user', id: '199282986@N03' }));
-	}, []);
-	return (
-		<main className={useMedia(500, 800, 1600)}>
-			{/* Switch안쪽에서 중첩되는 조건 라우트의 컴포넌트가 있을때 위쪽의 조건의 컴포넌트만 호출하고 나머지 무시 */}
-			<Switch>
-				<Route exact path='/'>
-					{/* 메인페이지 전용 헤더 */}
+	const queryClient = new QueryClient();
 
-					<Header isMain={true} />
-					<Main />
-				</Route>
-				<Route path='/'>
-					{/* 서브페이지 전용 헤더 */}
-					<Header isMain={false} />
-				</Route>
-			</Switch>
-			<Route path='/department' component={Department} />
-			<Route path='/gallery' component={Gallery} />
-			<Route path='/youtube' component={Youtube} />
-			<Route path='/detail/:id' component={Detail} />
-			<Route path='/members' component={Members} />
-			<Route path='/contact' component={Contact} />
-			<Route path='/community' component={Community} />
-			<Menu />
-			{/* params는 url에 특정 컴포넌트를 연결할 때 url로 정보값을 같이 전달 경로/:변수명 */}
-		</main>
+	useEffect(() => {
+		dispatch(fetchYoutube());
+		dispatch(fetchFlickr({ type: 'user', id: '164021883@N04' }));
+	}, []);
+
+	return (
+		<QueryClientProvider client={queryClient}>
+			<main className={useMedia()}>
+				<Switch>
+					<Route exact path='/'>
+						<Header isMain={true} />
+						<Main />
+					</Route>
+					<Route path='/'>
+						<Header isMain={false} />
+					</Route>
+				</Switch>
+				<Route path='/department' component={Department} />
+				<Route path='/gallery' component={Gallery} />
+				<Route path='/youtube' component={Youtube} />
+				<Route path='/members' component={Members} />
+				<Route path='/contact' component={Contact} />
+				<Route path='/community' component={Community} />
+				<Route path='/detail/:id' component={Detail} />
+				<Footer />
+				<Menu />
+			</main>
+			<ReactQueryDevtools />
+		</QueryClientProvider>
 	);
 }
-
 export default App;
