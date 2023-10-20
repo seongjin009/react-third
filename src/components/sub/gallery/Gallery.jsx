@@ -16,6 +16,22 @@ export default function Gallery() {
 	const [IsUser, setIsUser] = useState(true);
 	const IsModal = useSelector((store) => store.modal.isOpen);
 	const my_id = '199282986@N03';
+	const [gallcor, setgallcor] = useState(false);
+	const refCorbtn = useRef(null);
+
+	const handleClickcor = (e) => {
+		e.preventDefault();
+		const cor = refCorbtn.current.querySelector('button');
+		if (gallcor === true) {
+			setgallcor(false);
+			cor.classList.remove('color');
+		}
+		if (gallcor === false) {
+			setgallcor(true);
+			cor.classList.add('color');
+		}
+		console.log(gallcor);
+	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -63,6 +79,10 @@ export default function Gallery() {
 	return (
 		<>
 			<Layout title={'Gallery'}>
+				<div className='ColBox' ref={refCorbtn}>
+					<button onClick={handleClickcor}>Gallery Color</button>
+				</div>
+
 				<div className='searchBox'>
 					<form onSubmit={handleSubmit}>
 						<input ref={refInput} type='text' placeholder='검색어를 입력하세요' />
