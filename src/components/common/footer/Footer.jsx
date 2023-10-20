@@ -4,6 +4,8 @@ import './Footer.scss';
 
 export default function Footer() {
 	return (
+		<footer></footer>
+		/*
 		<footer>
 			<h1>DCODELAB</h1>
 
@@ -22,5 +24,6 @@ export default function Footer() {
 				</li>
 			</ul>
 		</footer>
+		*/
 	);
 }
