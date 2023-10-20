@@ -1,10 +1,10 @@
 import Layout from '../../common/layout/Layout';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useYoutubeQuery } from '../../../hooks/useYoutube';
 import './Youtube.scss';
 
 export default function Youtube() {
-	const Youtube = useSelector((store) => store.youtube.data);
+	const { data: Youtube, isSuccess } = useYoutubeQuery();
 
 	return (
 		<>
@@ -17,51 +17,37 @@ export default function Youtube() {
 					</div>
 				</div>
 
-				{Youtube.map((data, idx) => {
-					let tit = data.snippet.title;
-					let desc = data.snippet.description;
-					let date = data.snippet.publishedAt;
+				{isSuccess &&
+					Youtube.map((data, idx) => {
+						let tit = data.snippet.title;
+						let desc = data.snippet.description;
+						let date = data.snippet.publishedAt;
 
-					return (
-						<article key={idx}>
-							<div className='txtBox'>
-								<Link to={`/detail/${data.id}`}>
+						return (
+							<article key={idx}>
+								<div className='txtBox'>
 									<div className='titBox'>
-										<div className='line1'></div>
-										<h2>{tit.length > 10 ? tit.substr(0, 7) + '...' : tit}</h2>
+										<h2>{tit.length > 60 ? tit.substr(0, 10) + '...' : tit}</h2>
 									</div>
 									<div className='conBox'>
-										<p>{desc.length > 10 ? tit.substr(0, 6) + '...' : desc}</p>
-										<div className='line1'></div>
-									</div>
-
-									<div className='dateBox'>
+										<p>{desc.length > 180 ? desc.substr(0, 30) + '...' : desc}</p>
 										<span>{date.split('T')[0].split('-').join('.')}</span>
 									</div>
-								</Link>
-							</div>
-							<div className='picBox'>
-								<Link to={`/detail/${data.id}`}>
-									<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
-								</Link>
-							</div>
-
-							<div className='picBox1'>
-								<Link to={`/detail/${data.id}`}>
-									<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
-								</Link>
-							</div>
-						</article>
-					);
-				})}
+								</div>
+								<div className='picBox'>
+									<Link to={`/detail/${data.id}`}>
+										<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
+									</Link>
+								</div>
+								<div className='picBox1'>
+									<Link to={`/detail/${data.id}`}>
+										<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
+									</Link>
+								</div>
+							</article>
+						);
+					})}
 			</Layout>
-
-			{/* {<Modal setIsModal={setIsModal}>
-					<iframe
-						src={`https://www.youtube.com/embed/${Youtube[Index].snippet.resourceId.videoId}`}
-						title='youtube'
-					></iframe>
-			</Modal> */}
 		</>
 	);
 }
