@@ -211,7 +211,7 @@
 					width: 30vw;
 				}
 				&:hover {
-					transform: scale(1.05);
+					transform: scale(1.05) translateX(-1vw);
 					filter: grayscale(0%);
 					.line3 {
 						width: 80vw;

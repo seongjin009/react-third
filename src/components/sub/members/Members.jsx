@@ -242,8 +242,10 @@ export default function Members() {
 							{/* btnSet */}
 							<tr>
 								<th colSpan='2'>
-									<input type='reset' value='cancel' onClick={resetForm} />
-									<input type='submit' value='send' onClick={resetForm} />
+									<div className='btnSet'>
+										<input type='reset' value='cancel' onClick={resetForm} />
+										<input type='submit' value='send' onClick={resetForm} />
+									</div>
 								</th>
 							</tr>
 						</tbody>
