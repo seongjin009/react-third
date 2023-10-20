@@ -79,7 +79,7 @@
 	}
 	.swiper {
 		display: inline-block;
-		width: 80%;
+		width: 100%;
 		height: 100%;
 		padding: 10vw 0px;
 		.swiper-slide {
@@ -87,7 +87,7 @@
 			height: 100%;
 			.pic {
 				width: 100%;
-				height: 20vh;
+				height: 19vh;
 				opacity: 0.4;
 				transform: scale(0.5);
 				transition: opacity 0.5s, transform 0.5s;

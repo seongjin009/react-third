@@ -1,9 +1,12 @@
 .header {
-	width: 100%;
-	padding: 3vh 10vw;
+	width: 90%;
+	margin: 0 auto;
+	padding: 3vh 0 3vh 0;
 	display: flex;
 	justify-content: space-between;
 	position: relative;
+	gap: 1vw;
+	border-bottom: 1px solid #000;
 	.bars {
 		position: absolute;
 		opacity: 0;

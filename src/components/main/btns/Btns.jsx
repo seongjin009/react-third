@@ -1,9 +1,11 @@
 import Anime from '../../../asset/anime';
 import './Btns.scss';
 import { useRef, useEffect, useState } from 'react';
+import { useThrottle } from '../../../hooks/useTrottle';
 
 function Btns() {
 	//ul요소를 담을 참조객체 생성
+
 	const refBtns = useRef(null);
 	//새로위치값이 배열로 담길 참조객체 생성
 	let pos = useRef([]);
@@ -28,13 +30,17 @@ function Btns() {
 			}
 		});
 	};
+	const throttledActivation = useThrottle(activation);
+	const throttledGetPos = useThrottle(getPos);
+
 	useEffect(() => {
 		getPos();
-		window.addEventListener('resize', getPos);
-		window.addEventListener('scroll', activation);
+		window.addEventListener('resize', throttledGetPos);
+		window.addEventListener('scroll', throttledActivation);
+
 		return () => {
-			window.removeEventListener('resize', getPos);
-			window.removeEventListener('scroll', activation);
+			window.removeEventListener('resize', throttledGetPos);
+			window.removeEventListener('scroll', throttledActivation);
 		};
 	}, []);
 
