@@ -1,6 +1,6 @@
 import Layout from '../../common/layout/Layout';
 import './Gallery.scss';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Masonry from 'react-masonry-component';
 import Modal from '../../common/modal/Modal';
 
@@ -9,7 +9,7 @@ import { useGlobalData } from '../../../hooks/useGlobalContext';
 
 export default function Gallery() {
 	useGlobalData();
-	const { setModalOpen } = useGlobalData();
+	const { setModalOpen, setTheme, Theme } = useGlobalData();
 	const refInput = useRef(null);
 	const refBtnSet = useRef(null);
 	const [ActiveURL, setActiveURL] = useState('');
@@ -81,68 +81,72 @@ export default function Gallery() {
 	return (
 		<>
 			<Layout title={'Gallery'}>
-				<div className='ColBox' ref={refCorbtn}>
-					<button onClick={handleClickcor}>Gallery Color</button>
-				</div>
+				<main className={`${Theme ? 'dark' : 'light'}`}>
+					<div className='btnBox'>
+						<button className='btnspanBox' onClick={() => setTheme(!Theme)}>
+							<span className='btnTheme'>Theme</span>
+						</button>
+					</div>
 
-				<div className='searchBox'>
-					<form onSubmit={handleSubmit}>
-						<input ref={refInput} type='text' placeholder='검색어를 입력하세요' />
-						<button>검색</button>
-					</form>
-				</div>
+					<div className='searchBox'>
+						<form onSubmit={handleSubmit}>
+							<input ref={refInput} type='text' placeholder='검색어를 입력하세요' />
+							<button>검색</button>
+						</form>
+					</div>
 
-				<div className='btnSet' ref={refBtnSet}>
-					<button className='on' onClick={handleClickMy}>
-						My Gallery
-					</button>
+					<div className='btnSet' ref={refBtnSet}>
+						<button className='on' onClick={handleClickMy}>
+							My Gallery
+						</button>
 
-					<button onClick={handleClickInterest}>Interest Gallery</button>
-				</div>
+						<button onClick={handleClickInterest}>Interest Gallery</button>
+					</div>
 
-				<div className='picFrame'>
-					<Masonry
-						elementType={'div'}
-						options={{ transitionDuration: '0.5s' }}
-						disableImagesLoaded={false}
-						updateOnEachImageLoad={false}
-					>
-						{isSuccess &&
-							Pics.map((data, idx) => {
-								return (
-									<article key={idx}>
-										<div className='inner'>
-											<img
-												className='pic'
-												src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_m.jpg`}
-												alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
-												onClick={(e) => {
-													setActiveURL(e.target.getAttribute('alt'));
-													setModalOpen(true);
-												}}
-											/>
-											<h2>{data.title}</h2>
-											<div className='profile'>
+					<div className='picFrame'>
+						<Masonry
+							elementType={'div'}
+							options={{ transitionDuration: '0.5s' }}
+							disableImagesLoaded={false}
+							updateOnEachImageLoad={false}
+						>
+							{isSuccess &&
+								Pics.map((data, idx) => {
+									return (
+										<article key={idx}>
+											<div className='inner'>
 												<img
-													src={`http://farm${data.farm}.staticflickr.com/${data.server}/buddyicons/${data.owner}.jpg`}
-													alt={data.owner}
-													onError={(e) => {
-														//만약 사용자가 프로필 이미지를 올리지 않았을때 엑박이 뜨므로
-														//onError이벤트를 연결해서 대체이미지 출력
-														e.target.setAttribute(
-															'src',
-															'https://www.flickr.com/images/buddyicon.gif'
-														);
+													className='pic'
+													src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_m.jpg`}
+													alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
+													onClick={(e) => {
+														setActiveURL(e.target.getAttribute('alt'));
+														setModalOpen(true);
 													}}
 												/>
-												<span onClick={handleClickProfile}>{data.owner}</span>
+												<h2>{data.title}</h2>
+												<div className='profile'>
+													<img
+														src={`http://farm${data.farm}.staticflickr.com/${data.server}/buddyicons/${data.owner}.jpg`}
+														alt={data.owner}
+														onError={(e) => {
+															//만약 사용자가 프로필 이미지를 올리지 않았을때 엑박이 뜨므로
+															//onError이벤트를 연결해서 대체이미지 출력
+															e.target.setAttribute(
+																'src',
+																'https://www.flickr.com/images/buddyicon.gif'
+															);
+														}}
+													/>
+													<span onClick={handleClickProfile}>{data.owner}</span>
+												</div>
 											</div>
-										</div>
-									</article>
-								);
-							})}
-					</Masonry>
-				</div>
+										</article>
+									);
+								})}
+						</Masonry>
+					</div>
+				</main>
 			</Layout>
 
 			<Modal>

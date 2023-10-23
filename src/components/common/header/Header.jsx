@@ -13,32 +13,32 @@ export default function Header({ isMain }) {
 			<ul>
 				<li>
 					<NavLink to='/department' activeClassName='active'>
-						Department
+						<div className='clickBox'>Department</div>
 					</NavLink>
 				</li>
 				<li>
 					<NavLink to='/community' activeClassName='active'>
-						Community
+						<div className='clickBox'>Community</div>
 					</NavLink>
 				</li>
 				<li>
 					<NavLink to='/gallery' activeClassName='active'>
-						Gallery
+						<div className='clickBox'>Gallery</div>
 					</NavLink>
 				</li>
 				<li>
 					<NavLink to='/youtube' activeClassName='active'>
-						Youtube
+						<div className='clickBox'>Youtube</div>
 					</NavLink>
 				</li>
 				<li>
 					<NavLink to='/members' activeClassName='active'>
-						Members
+						<div className='clickBox'>Members</div>
 					</NavLink>
 				</li>
 				<li>
 					<NavLink to='/contact' activeClassName='active'>
-						Contact
+						<div className='clickBox'>Contact</div>
 					</NavLink>
 				</li>
 			</ul>
@@ -49,9 +49,9 @@ export default function Header({ isMain }) {
 				color={'#333'}
 				onClick={() => setMenuOpen(!MenuOpen)}
 			/>
-			<span className='btnTheme' onClick={() => setTheme(!Theme)}>
+			{/*<span className='btnTheme' onClick={() => setTheme(!Theme)}>
 				Theme
-			</span>
+	</span>*/}
 		</header>
 	);
 }
