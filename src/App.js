@@ -13,7 +13,7 @@ import Main from './components/main/mainWrap/Main';
 import { useMedia } from './hooks/useMedia';
 
 import Menu from './components/common/menu/Menu';
-import Footer from './components/common/footer/Footer';
+//import Footer from './components/common/footer/Footer';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { useGlobalData } from './hooks/useGlobalContext';
@@ -40,7 +40,7 @@ function App() {
 				<Route path='/contact' component={Contact} />
 				<Route path='/community' component={Community} />
 				<Route path='/detail/:id' component={Detail} />
-				<Footer />
+
 				<Menu />
 			</main>
 			<ReactQueryDevtools />

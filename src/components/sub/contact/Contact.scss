@@ -237,21 +237,34 @@ h1 {
 
 .mobile {
 	.upperBox {
+		width: 100%;
 		#mailBox {
+			width: 100%;
+
 			.lineBox {
+				width: 100%;
+
+				height: 70vh;
 				.upper {
 					display: flex;
 					flex-wrap: wrap;
 					margin-bottom: -2vh;
 					span {
-						width: 50vw;
+						width: 100%;
+
 						margin-bottom: 5vh;
-						label {
-							input[type='text'],
-							input[type='email'] {
-							}
+						input[type='text'],
+						input[type='email'] {
+							width: 100%;
 						}
 					}
+				}
+			}
+			.btnSet {
+				gap: 0;
+				input {
+					width: 20vw;
+					font-size: 3vw;
 				}
 			}
 		}
@@ -271,6 +284,21 @@ h1 {
 			}
 			#etc {
 				width: 50%;
+				font-size: 2vw;
+			}
+		}
+	}
+	#mapBox {
+		.btnSet {
+			.traBtn,
+			.resBtn,
+			.roadBtn {
+				width: 20vw;
+				font-size: 2vw;
+			}
+		}
+		ul {
+			li {
 				font-size: 2vw;
 			}
 		}
