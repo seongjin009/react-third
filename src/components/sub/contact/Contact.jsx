@@ -1,7 +1,7 @@
 import Layout from '../../common/layout/Layout';
-import './Contact.scss';
 import emailjs from '@emailjs/browser';
-import { useRef, useEffect, useState } from 'react';
+import './Contact.scss';
+import { useRef, useEffect, useState, useCallback } from 'react';
 
 export default function Contact() {
 	const form = useRef(null);
