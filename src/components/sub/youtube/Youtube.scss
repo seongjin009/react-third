@@ -110,6 +110,7 @@
 					justify-content: center;
 					align-items: center;
 					transition: 0.2s;
+					padding: 10px;
 				}
 				.conBox {
 					width: 40%;
@@ -119,6 +120,7 @@
 					display: flex;
 					position: absolute;
 					justify-content: center;
+					padding: 10px;
 
 					align-items: center;
 					transition: 0.2s;
@@ -131,12 +133,12 @@
 				.dateBox {
 					width: 20%;
 					height: 100%;
-					top: 0;
 					left: 80%;
 					position: absolute;
 					display: flex;
 					justify-content: center;
-					align-items: center;
+					padding: 10px;
+					margin-top: 30%;
 					transition: 0.2s;
 				}
 			}
@@ -184,6 +186,11 @@
 			article {
 				width: 100%;
 				margin-top: 10vh;
+				.txtBox {
+					.dateBox {
+						padding-top: 20%;
+					}
+				}
 			}
 		}
 	}

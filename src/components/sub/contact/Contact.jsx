@@ -96,7 +96,7 @@ export default function Contact() {
 		return () => {
 			window.removeEventListener('resize', setCenter);
 		};
-	}, [Index]); //Index값이 변경될때마다 지도화면이 다시 갱신되어야 하므로 Index값을 의존성 배열에 등록
+	}, [Index, kakao]); //Index값이 변경될때마다 지도화면이 다시 갱신되어야 하므로 Index값을 의존성 배열에 등록
 
 	useEffect(() => {
 		//traffic 값이 바뀔때마다 실행될 구문
@@ -128,25 +128,18 @@ export default function Contact() {
 		//sendForm메서드는 각 키값을 문자열로만 인수로 전달되도록 type지정되어 있기 때문에
 		//변수를 `${}`로 감싸서 문자형식으로 전달
 
-		emailjs
-			.sendForm(
-				`${process.env.REACT_APP_SERVICE_ID}`,
-				`${process.env.REACT_APP_TEMPLATE_ID}`,
-				form.current,
-				`${process.env.REACT_APP_PUBLIC_KEY}`
-			)
-			.then(
-				(result) => {
-					alert('문의내용이 메일로 발송되었습니다.');
-					console.log(result);
-					resetForm();
-				},
-				(error) => {
-					alert('문의내용 전송에 실패했습니다.');
-					console.log(error);
-					resetForm();
-				}
-			);
+		emailjs.sendForm(`service_e9crmle`, `template_ykzkm22`, form.current, `rK8Krscf90c8RrFsS`).then(
+			(result) => {
+				alert('문의내용이 메일로 발송되었습니다.');
+				console.log(result);
+				resetForm();
+			},
+			(error) => {
+				alert('문의내용 전송에 실패했습니다.');
+				console.log(error);
+				resetForm();
+			}
+		);
 	};
 
 	return (

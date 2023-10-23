@@ -9,6 +9,21 @@ export default function Community() {
 			content: "hello jeonghyun i'm seongjin",
 			data: new Date(),
 		},
+		{
+			title: 'jeonghyn',
+			content: "hello jeonghyun i'm seongjin",
+			data: new Date(),
+		},
+		{
+			title: 'jeonghyn',
+			content: "hello jeonghyun i'm seongjin",
+			data: new Date(),
+		},
+		{
+			title: 'jeonghyn',
+			content: "hello jeonghyun i'm seongjin",
+			data: new Date(),
+		},
 	];
 	//로컬데이터의 값을 parsing해서
 	const getLocalDate = () => {

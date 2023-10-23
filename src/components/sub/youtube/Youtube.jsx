@@ -27,11 +27,19 @@ export default function Youtube() {
 							<article key={idx}>
 								<div className='txtBox'>
 									<div className='titBox'>
-										<h2>{tit.length > 60 ? tit.substr(0, 10) + '...' : tit}</h2>
+										<Link to={`/detail/${data.id}`}>
+											<h2>{tit.length > 60 ? tit.substr(0, 10) + '...' : tit}</h2>
+										</Link>
 									</div>
 									<div className='conBox'>
-										<p>{desc.length > 180 ? desc.substr(0, 30) + '...' : desc}</p>
-										<span>{date.split('T')[0].split('-').join('.')}</span>
+										<Link to={`/detail/${data.id}`}>
+											<p>{desc.length > 180 ? desc.substr(0, 30) + '...' : desc}</p>
+										</Link>
+									</div>
+									<div className='dateBox'>
+										<Link to={`/detail/${data.id}`}>
+											<span>{date.split('T')[0].split('-').join('.')}</span>
+										</Link>
 									</div>
 								</div>
 								<div className='picBox'>
