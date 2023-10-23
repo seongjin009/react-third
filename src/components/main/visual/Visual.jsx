@@ -28,7 +28,7 @@ function Visual() {
 								<li key={idx} className={idx === Index ? 'on' : ''}>
 									<h3>
 										{tit.snippet.title.length > 10
-											? tit.snippet.title.substr(0, 15) + '...'
+											? tit.snippet.title.substr(0, 20) + '...'
 											: tit.snippet.title}
 									</h3>
 									<p>{tit.snippet.description.substr(0, 30) + '...'}</p>

@@ -25,6 +25,7 @@ function News() {
 
 	return (
 		<section className='news myScroll'>
+			<img src='../../../img/zoe.jpg' />
 			<h2>News</h2>
 			<div className='postWrap'>
 				{Post.map((el, idx) => {
