@@ -17,15 +17,13 @@ import Footer from './components/common/footer/Footer';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { useGlobalData } from './hooks/useGlobalContext';
-import { useGlobalData } from './hooks/useGlobalContext';
-
 function App() {
 	const queryClient = new QueryClient();
 
 	const { Theme } = useGlobalData();
 	return (
 		<QueryClientProvider client={queryClient}>
-			<main className={`${useMedia()} &{Theme? dark: 'light'}`}>
+			<main className={`${useMedia()} ${Theme ? ' dark ' : 'light'}`}>
 				<Switch>
 					<Route exact path='/'>
 						<Header isMain={true} />

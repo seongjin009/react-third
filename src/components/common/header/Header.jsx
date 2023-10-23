@@ -49,9 +49,9 @@ export default function Header({ isMain }) {
 				color={'#333'}
 				onClick={() => setMenuOpen(!MenuOpen)}
 			/>
-			<span className='btnTheme' onClick={
-
-			}>Theme</span>
+			<span className='btnTheme' onClick={() => setTheme(!Theme)}>
+				Theme
+			</span>
 		</header>
 	);
 }
