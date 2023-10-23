@@ -1,29 +1,25 @@
-import { Link } from 'react-router-dom';
-import { FaYoutube, FaTwitter } from 'react-icons/fa6';
 import './Footer.scss';
 
 export default function Footer() {
 	return (
-		<footer></footer>
-		/*
-		<footer>
-			<h1>DCODELAB</h1>
+		<footer className='footer'>
+			<div className='fooBox'>
+				<h2>FOOTER</h2>
 
-			<p>2023 DCODELAB &copy; ALL RIGHTS RESERVED.</p>
-
-			<ul>
-				<li>
-					<Link to='/'>
-						<FaYoutube size={20} />
-					</Link>
-				</li>
-				<li>
-					<Link to='/'>
-						<FaTwitter size={20} />
-					</Link>
-				</li>
-			</ul>
+				<ul className='ulBox'>
+					<li>seongjin</li>
+					<li>lee</li>
+					<li>1209</li>
+					<li>male(notgay)</li>
+				</ul>
+				<p>
+					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe tempora facilis labore
+					esse provident beatae eveniet quidem a eos at.
+				</p>
+			</div>
+			<div className='spanBox'>
+				<span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, expedita.</span>
+			</div>
 		</footer>
-		*/
 	);
 }

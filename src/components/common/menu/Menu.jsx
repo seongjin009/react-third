@@ -1,19 +1,20 @@
 import './Menu.scss';
 import { Link, NavLink } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useSelector } from 'react-redux';
+import { useGlobalData } from '../../../hooks/useGlobalContext';
 
 function Menu() {
-	const { isOpen } = useSelector((store) => store.menu);
+	const { MenuOpen, setMenuOpen } = useGlobalData();
 	return (
 		<AnimatePresence>
-			{isOpen && (
+			{MenuOpen && (
 				<motion.aside
 					className='menu'
 					initial={{ x: '-100%' }}
 					animate={{ x: '0%' }}
 					exit={{ x: '-100%' }}
 					transition={{ duration: 0.5 }}
+					onClick={() => setMenuOpen(false)}
 				>
 					<h1>
 						<Link to='/'>LOGO</Link>
