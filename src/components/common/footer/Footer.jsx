@@ -12,10 +12,6 @@ export default function Footer() {
 					<li>1209</li>
 					<li>male(notgay)</li>
 				</ul>
-				<p>
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe tempora facilis labore
-					esse provident beatae eveniet quidem a eos at.
-				</p>
 			</div>
 			<div className='spanBox'>
 				<span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, expedita.</span>

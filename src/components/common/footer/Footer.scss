@@ -1,7 +1,6 @@
 .footer {
-	background: #8a8a8a;
+	width: 100%;
 	height: 100%;
-
 	.fooBox {
 		width: 100%;
 		display: flex;
@@ -16,32 +15,23 @@
 			transform: translate(10%, 0%);
 			width: 80%;
 			height: 2px;
-			background: #b2b2b2;
 		}
 		h2 {
-			width: 50%;
+			width: 30vw;
 			padding: 20px;
 			margin-left: 40px;
-			color: #e1e1e1;
+			color: #000;
 			font-size: 30px;
 		}
 		ul {
 			width: 30%;
-			text-align: right;
 			display: flex;
-			gap: 4vw;
-			align-items: center;
-			margin-left: 10%;
-
+			position: absolute;
+			gap: 3vw;
+			right: 10vw;
 			li {
-				color: #cecece;
+				color: #000;
 			}
-		}
-		p {
-			width: 20%;
-			color: #dcdcdc;
-			margin-left: 60px;
-			font-size: 14px;
 		}
 	}
 
@@ -49,92 +39,15 @@
 		width: 88%;
 		display: flex;
 		flex-wrap: wrap;
-		text-align: right;
 		span {
 			width: 100%;
-			color: #cbcbcb;
-		}
-	}
-}
-
-.laptop {
-	.footer {
-		height: auto;
-
-		.fooBox {
-			width: 100%;
-
-			word-break: break-all;
-
-			h2 {
-				width: 30%;
-			}
-			ul {
-				width: 60%;
-				text-align: right;
-				display: flex;
-				gap: 4vw;
-				align-items: center;
-				margin-left: 1%;
-				justify-content: right;
-
-				li {
-					color: #cecece;
-				}
-			}
-			p {
-				width: 20%;
-				color: #dcdcdc;
-				margin-left: 60px;
-				font-size: 14px;
-			}
-		}
-
-		.spanBox {
-			width: 88%;
-			display: flex;
-			flex-wrap: wrap;
-			text-align: right;
-			span {
-				width: 100%;
-				color: #cbcbcb;
-			}
-		}
-	}
-}
-
-.tablet {
-	.footer {
-		height: auto;
-
-		.fooBox {
-			width: 100%;
-
-			word-break: break-all;
-
-			h2 {
-				width: 30%;
-			}
-			ul {
-				width: 45%;
-				justify-content: right;
-			}
-		}
-
-		.spanBox {
-			width: 88%;
-			text-align: right;
-			span {
-				width: 100%;
-				color: #cbcbcb;
-			}
+			color: #000;
 		}
 	}
 }
 
 .mobile {
 	.footer {
-		background: #8a8a8a;
 		height: auto;
 
 		.fooBox {
@@ -152,26 +65,26 @@
 				transform: translate(10%, 0%);
 				width: 80%;
 				height: 2px;
-				background: #b2b2b2;
 			}
 			h2 {
 				width: 50%;
-				color: #e1e1e1;
+				color: #000;
 				font-size: 30px;
 				padding: 20px;
 			}
 			ul {
-				width: 100%;
-				padding: 20px;
+				width: 50%;
 				gap: 2vw;
-
+				top: 7vh;
+				right: 0%;
+				font-size: 3vw;
 				li {
-					color: #cecece;
+					color: #000;
 				}
 			}
 			p {
 				width: 60%;
-				color: #dcdcdc;
+				color: #000;
 				margin-left: 60px;
 				font-size: 14px;
 			}
@@ -184,7 +97,7 @@
 			text-align: right;
 			span {
 				width: 100%;
-				color: #cbcbcb;
+				color: #000;
 			}
 		}
 	}

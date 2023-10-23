@@ -4,7 +4,7 @@ import { useFlickrQuery } from '../../../hooks/useFlickr';
 function Info() {
 	const { data, isSuccess } = useFlickrQuery({
 		type: 'user',
-		id: '164021883@N04',
+		id: '199282986@N03',
 	});
 
 	return (
